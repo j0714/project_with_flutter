@@ -1,2 +1,2 @@
-project with flutter
-# project_with_flutter
+종합설계 
+플러터를 이용한 채팅 앱
