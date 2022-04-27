@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/screens/login.dart';
-import 'package:ui_1/screens/signup_student.dart';
+import 'package:ui_1/screens/signup.dart';
 
 void main() {
   runApp( MyApp());

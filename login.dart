@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:ui_1/screens/signup_student.dart';
+import 'package:ui_1/screens/signup.dart';
 
 class LoginForm extends StatefulWidget {
 
@@ -17,6 +17,7 @@ class _LoginFormState extends State<LoginForm> {
     return Scaffold(
       appBar: AppBar(title: Text('개척Talk', style: TextStyle(color: Colors.black),),
         centerTitle: true,
+        toolbarHeight: 60.0,
         backgroundColor: Color(0xff5D8AB7),
       ),
       body: SingleChildScrollView(
@@ -28,7 +29,7 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 250.0,),
+                SizedBox(height: 200.0,),
                 // Text('Login', style: TextStyle(
                 //     fontWeight: FontWeight.bold,
                 //     color: Colors.black,
@@ -114,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                     onPressed: (){
                       Navigator.push(context,
-                        MaterialPageRoute(builder: (_)=> SignupForm()));
+                        MaterialPageRoute(builder: (_)=> Signup()));
                     },
 
                   ),
@@ -123,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                SizedBox(height: 250.0,),
+                SizedBox(height: 200.0,),
                 // Container(
                 //   child: Row(
                 //     mainAxisAlignment: MainAxisAlignment.center,
