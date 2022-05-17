@@ -1,7 +1,7 @@
-import 'package:chatapp/color/shareColor.dart';
-import 'package:chatapp/screen/chatPage.dart';
-import 'package:chatapp/screen/noticePage.dart';
-import 'package:chatapp/screen/settingPage.dart';
+import 'package:ui_1/color/shareColor.dart';
+import 'package:ui_1/screen/chatPage.dart';
+import 'package:ui_1/screen/noticePage.dart';
+import 'package:ui_1/screen/settingPage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

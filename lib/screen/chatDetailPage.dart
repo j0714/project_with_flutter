@@ -1,4 +1,4 @@
-import 'package:chatapp/model/chatMessage.dart';
+import 'package:ui_1/model/chatMessage.dart';
 import 'package:flutter/material.dart';
 
 class ChatDetailPage extends StatefulWidget {
@@ -83,34 +83,34 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 reverse: true,
                 itemBuilder: (context, index) {
                   return _chats[index];
-              //     return Container(
-              //   padding: EdgeInsets.only(
-              //     left: 14,
-              //     right: 14,
-              //     top: 10,
-              //     bottom: 10,
-              //   ),
-              //   child: Align(
-              //     alignment: (message[index].messageType == 'receiver'
-              //         ? Alignment.topLeft
-              //         : Alignment.topRight),
-              //     child: Container(
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(20),
-              //         color: (message[index].messageType == 'receiver'
-              //             ? Colors.grey.shade200
-              //             : Colors.blue[200]),
-              //       ),
-              //       padding: EdgeInsets.all(16),
-              //       child: Text(
-              //         message[index].messageContent,
-              //         style: TextStyle(
-              //           fontSize: 15,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // );
+                  //     return Container(
+                  //   padding: EdgeInsets.only(
+                  //     left: 14,
+                  //     right: 14,
+                  //     top: 10,
+                  //     bottom: 10,
+                  //   ),
+                  //   child: Align(
+                  //     alignment: (message[index].messageType == 'receiver'
+                  //         ? Alignment.topLeft
+                  //         : Alignment.topRight),
+                  //     child: Container(
+                  //       decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //         color: (message[index].messageType == 'receiver'
+                  //             ? Colors.grey.shade200
+                  //             : Colors.blue[200]),
+                  //       ),
+                  //       padding: EdgeInsets.all(16),
+                  //       child: Text(
+                  //         message[index].messageContent,
+                  //         style: TextStyle(
+                  //           fontSize: 15,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // );
                 },
                 itemCount: _chats.length,
               ),

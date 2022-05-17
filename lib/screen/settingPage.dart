@@ -1,5 +1,5 @@
-import 'package:chatapp/color/shareColor.dart';
-import 'package:chatapp/widget/settingList.dart';
+import 'package:ui_1/color/shareColor.dart';
+import 'package:ui_1/widget/settingList.dart';
 import 'package:flutter/material.dart';
 
 class SettingPage extends StatefulWidget {

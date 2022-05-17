@@ -1,6 +1,6 @@
-import 'package:chatapp/screen/noticeSettingDetailPage.dart';
-import 'package:chatapp/screen/notificationDetailPage.dart';
-import 'package:chatapp/screen/privacyDetailPage.dart';
+import 'package:ui_1/screen/noticeSettingDetailPage.dart';
+import 'package:ui_1/screen/notificationDetailPage.dart';
+import 'package:ui_1/screen/privacyDetailPage.dart';
 import 'package:flutter/material.dart';
 
 class SettingList extends StatefulWidget {
@@ -22,7 +22,8 @@ class _SettingListState extends State<SettingList> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) { //제목에 맞춰서 페이지 이름 대칭
+            builder: (context) {
+              //제목에 맞춰서 페이지 이름 대칭
               if (widget.name == 'Privacy') {
                 return PrivacyPage();
               } else if (widget.name == 'Notice Setting') {

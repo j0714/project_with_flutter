@@ -1,6 +1,6 @@
-import 'package:chatapp/color/shareColor.dart';
-import 'package:chatapp/model/chatUsersModel.dart';
-import 'package:chatapp/widget/conversationList.dart';
+import 'package:ui_1/color/shareColor.dart';
+import 'package:ui_1/model/chatUsersModel.dart';
+import 'package:ui_1/widget/conversationList.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -9,27 +9,26 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-
-  void showAlert(BuildContext context){
+  void showAlert(BuildContext context) {
     showDialog(
-      context: context, 
-      builder: (context){
-        return Dialog(
-          backgroundColor: Colors.white,
-          child: Container(
-            width: 150,
-            height: 300,
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.blueGrey,
-                )
-              ],
+        context: context,
+        builder: (context) {
+          return Dialog(
+            backgroundColor: Colors.white,
+            child: Container(
+              width: 150,
+              height: 300,
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.blueGrey,
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-      });
+          );
+        });
   }
 
   List<ChatUsers> chatUsers = [
@@ -112,38 +111,39 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         showAlert(context);
                       },
-                    child: Container(
-                      padding:
-                          EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: ColorSet.appBarColor,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(
-                            'Add New',
-                            style: TextStyle(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            left: 8, right: 8, top: 2, bottom: 2),
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: ColorSet.appBarColor,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.add,
                               color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              size: 20,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 2,
+                            ),
+                            Text(
+                              'Add New',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),)
+                    )
                   ],
                 ),
               ),

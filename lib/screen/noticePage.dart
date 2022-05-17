@@ -1,6 +1,6 @@
-import 'package:chatapp/color/shareColor.dart';
-import 'package:chatapp/model/addNotice.dart';
-import 'package:chatapp/model/notice.dart';
+import 'package:ui_1/color/shareColor.dart';
+import 'package:ui_1/model/addNotice.dart';
+import 'package:ui_1/model/notice.dart';
 import 'package:flutter/material.dart';
 
 class NoticePage extends StatefulWidget {
@@ -9,7 +9,6 @@ class NoticePage extends StatefulWidget {
 }
 
 class _NoticePageState extends State<NoticePage> {
-
   TextEditingController _textEditingController = TextEditingController();
   List<Notice> _notices = [];
 
@@ -48,7 +47,10 @@ class _NoticePageState extends State<NoticePage> {
                       onTap: () {
                         // showAlert(context);
                         // return AddNotice();
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AddNotice()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddNotice()));
                       },
                       child: Container(
                         padding: EdgeInsets.only(
@@ -121,14 +123,14 @@ class _NoticePageState extends State<NoticePage> {
             //   },
             //   ),
 
-          // ListView.builder(
-          //       reverse: true,
-          //       itemBuilder: (context, index) {
-          //         // return ChatBubble(_chats[index]);
-          //         return _notices[index];
-          //       },
-          //       itemCount: _notices.length,
-          //     ),
+            // ListView.builder(
+            //       reverse: true,
+            //       itemBuilder: (context, index) {
+            //         // return ChatBubble(_chats[index]);
+            //         return _notices[index];
+            //       },
+            //       itemCount: _notices.length,
+            //     ),
           ],
         ),
       ),
