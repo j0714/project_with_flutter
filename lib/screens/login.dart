@@ -15,6 +15,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // 화살표 버튼 삭제
         title: Text(
           '개척Talk',
           style: TextStyle(color: Colors.black),
