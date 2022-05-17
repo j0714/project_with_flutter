@@ -1,3 +1,4 @@
+import 'package:ui_1/color/shareColor.dart';
 import 'package:ui_1/model/chatMessage.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        // backgroundColor: Colors.white,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.white,
         flexibleSpace: SafeArea(
           child: Container(
             padding: EdgeInsets.only(right: 16),
@@ -121,8 +121,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60, //이거 때문에 안되는거 같은데 개짜증나네....
                 width: double.infinity,
-                // color: Colors.white,
-                color: Colors.amber, //이거 나중에 바꾸기
+                color: Colors.white,
+                // color: Colors.amber, //이거 나중에 바꾸기
                 child: Row(
                   children: <Widget>[
                     GestureDetector(
