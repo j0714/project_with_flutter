@@ -28,6 +28,62 @@ class _SignupState extends State<Signup> {
     }
   }
 
+  void showAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          backgroundColor: Colors.white,
+          child: Container(
+            width: 150,
+            height: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  size: 50,
+                  color: Colors.blue,
+                ),
+                SizedBox(height: 20,),
+                Text(
+                  '회원가입 성공',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: _tryValidation,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 60.0, left: 30.0, right: 30.0, bottom: 0.0),
+                    width: double.infinity,
+                    child: FlatButton(
+                      child: Text(
+                        '로그인하러 가기',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => LoginForm()));
+                      },
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue[700],
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -333,10 +389,11 @@ class _SignupState extends State<Signup> {
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => LoginForm()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) => LoginForm()));
+                                      showAlert(context);
                                     },
                                   ),
                                   decoration: BoxDecoration(
@@ -528,10 +585,11 @@ class _SignupState extends State<Signup> {
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => LoginForm()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) => LoginForm()));
+                                      showAlert(context);
                                     },
                                   ),
                                   decoration: BoxDecoration(
