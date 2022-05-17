@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_1/screens/login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -109,7 +110,7 @@ class _SignupState extends State<Signup> {
                                 child: TextFormField(
                                   validator: (value) {
                                     if (value!.isEmpty) {
-                                      return "email";
+                                      return "writhe email";
                                     } else
                                       return null;
                                   },
@@ -335,7 +336,7 @@ class _SignupState extends State<Signup> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => Signup()));
+                                              builder: (_) => LoginForm()));
                                     },
                                   ),
                                   decoration: BoxDecoration(
@@ -530,7 +531,7 @@ class _SignupState extends State<Signup> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => Signup()));
+                                              builder: (_) => LoginForm()));
                                     },
                                   ),
                                   decoration: BoxDecoration(
