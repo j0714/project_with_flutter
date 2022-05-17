@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ui_1/screen/homePage.dart';
 import 'package:ui_1/screens/signup.dart';
 
 class LoginForm extends StatefulWidget {
@@ -106,7 +107,12 @@ class _LoginFormState extends State<LoginForm> {
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                         Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
                     ),
                     decoration: BoxDecoration(
                       color: Colors.blue[700],
