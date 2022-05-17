@@ -14,13 +14,13 @@ class _NoticePageState extends State<NoticePage> {
 
   void showAlert(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-            backgroundColor: Colors.white,
-            child: AddNotice(),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: AddNotice(),
+        );
+      },
+    );
   }
 
   @override
