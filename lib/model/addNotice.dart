@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_1/color/shareColor.dart';
 
 class AddNotice extends StatefulWidget {
   const AddNotice({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _AddNoticeState extends State<AddNotice> {
         appBar: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.amber,
+          backgroundColor: ColorSet.appBarColor,
           flexibleSpace: SafeArea(
             child: Container(
               padding: EdgeInsets.only(right: 16),
@@ -30,7 +31,7 @@ class _AddNoticeState extends State<AddNotice> {
                     },
                     icon: Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                   Expanded(
@@ -43,6 +44,7 @@ class _AddNoticeState extends State<AddNotice> {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -53,14 +55,18 @@ class _AddNoticeState extends State<AddNotice> {
             ),
           ),
         ),
-        body: Padding(
+        body: Scaffold(
+          backgroundColor: ColorSet.pageBackgroundColor,
+        body : Padding(
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(height: 20,),
                 TextField(
                   decoration: InputDecoration(
-                    hintText: 'notice title',
+                    hintText: 'Notice title',
+                    hintStyle: TextStyle(fontWeight: FontWeight.bold),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       borderSide: BorderSide(color: Colors.blue),
@@ -70,9 +76,10 @@ class _AddNoticeState extends State<AddNotice> {
                     fillColor: Colors.white,
                   ),
                 ),
+                SizedBox(height: 20,),
                 TextField(
                   decoration: InputDecoration(
-                    hintText: 'write notice',
+                    hintText: 'Write notice',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       borderSide: BorderSide(color: Colors.blue),
@@ -83,6 +90,7 @@ class _AddNoticeState extends State<AddNotice> {
                   ),
                   maxLines: 20,
                 ),
+                SizedBox(height : 20),
                 Row(
                   // crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -96,12 +104,12 @@ class _AddNoticeState extends State<AddNotice> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             // color: ColorSet.appBarColor,
-                            color: Colors.amber),
+                            color: ColorSet.appBarColor),
                         child: Row(
                           children: <Widget>[
                             Icon(
                               Icons.add,
-                              color: Colors.black,
+                              color: Colors.white,
                               size: 20,
                             ),
                             SizedBox(
@@ -110,7 +118,7 @@ class _AddNoticeState extends State<AddNotice> {
                             Text(
                               'Add New',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -131,7 +139,7 @@ class _AddNoticeState extends State<AddNotice> {
               ],
             ),
           ),
-        ),
+        ),),
       ),
     );
   }

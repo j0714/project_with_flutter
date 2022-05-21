@@ -2,6 +2,8 @@ import 'package:ui_1/color/shareColor.dart';
 import 'package:ui_1/model/addNotice.dart';
 import 'package:ui_1/model/notice.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_1/model/noticeModel.dart';
+import 'package:ui_1/widget/noticeList.dart';
 
 class NoticePage extends StatefulWidget {
   @override
@@ -10,7 +12,7 @@ class NoticePage extends StatefulWidget {
 
 class _NoticePageState extends State<NoticePage> {
   TextEditingController _textEditingController = TextEditingController();
-  List<Notice> _notices = [];
+  // List<Notice> _notices = [];
 
   void showAlert(BuildContext context) {
     showDialog(
@@ -22,6 +24,15 @@ class _NoticePageState extends State<NoticePage> {
       },
     );
   }
+  
+  List<NoticeModels> noticeModels =[
+     NoticeModels(
+        name: "이도흠",
+        noticeTitle: '이거는 제목임',
+        noticeText: '길이 아니라 이 정도 길이는 어떻게 되는지 정말 궁금한데 이거 그대로 상자 크기만 커지만 ㄹㅇ 너무 대박인데 Expaned라서 옆으로만 커지는 거 아닌가 모르겠넹',
+        imageURL: 'images/home.png',
+        time: '오후 5:00'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -111,21 +122,23 @@ class _NoticePageState extends State<NoticePage> {
                   ),
                 ),
               ),
-              // ListView.builder(
-              //   itemCount: chatUsers.length,
-              //   shrinkWrap: true,
-              //   padding: EdgeInsets.only(top : 16),
-              //   physics: NeverScrollableScrollPhysics(),
-              //   itemBuilder: (context, index) {
-              //     return ConversationList(
-              //       name: chatUsers[index].name,
-              //       messageText: chatUsers[index].messageText,
-              //       imageURL: chatUsers[index].imageURL,
-              //       time: chatUsers[index].time,
-              //       isMessageRoad: (index == 0 || index == 3)?true:false,
-              //       );
-              //   },
-              //   ),
+
+              ListView.builder(
+                itemCount: noticeModels.length,
+                shrinkWrap: true,
+                padding: EdgeInsets.only(top : 16),
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return NoticeList(
+                    name: noticeModels[index].name,
+                    noticeTitle: noticeModels[index].noticeTitle,
+                    noticeText: noticeModels[index].noticeText,
+                    imageURL: noticeModels[index].imageURL,
+                    time: noticeModels[index].time,
+                    isNoticeRoad: (index == 0 || index == 3)?true:false,
+                    );
+                },
+                ),
 
               // ListView.builder(
               //       reverse: true,
