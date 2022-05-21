@@ -14,18 +14,25 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // 화살표 버튼 삭제
-        title: Text(
-          '개척Talk',
-          style: TextStyle(color: Colors.black),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false, // 화살표 버튼 삭제
+          title: Text(
+            '개척Talk',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ), //AppBar 색상 변경
+          ),
+          centerTitle: true,
+          toolbarHeight: 60.0,
+          backgroundColor: Color(0xff5D8AB7),
         ),
-        centerTitle: true,
-        toolbarHeight: 60.0,
-        backgroundColor: Color(0xff5D8AB7),
-      ),
-      body: SingleChildScrollView(
+        body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
             color: Color(0xffDAE0E8),
@@ -108,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                         Navigator.push(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => HomePage()));
@@ -160,7 +167,9 @@ class _LoginFormState extends State<LoginForm> {
                 ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
