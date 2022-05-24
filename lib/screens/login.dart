@@ -1,10 +1,11 @@
 import 'dart:ui';
-
+import 'package:ui_1/screens/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ui_1/screen/homePage.dart';
 import 'package:ui_1/screens/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -12,6 +13,11 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final _authentication = FirebaseAuth.instance;
+
+  String userEmail = '';
+  String userPassword = '';
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -66,6 +72,13 @@ class _LoginFormState extends State<LoginForm> {
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
                     margin: EdgeInsets.only(top: 10.0),
                     child: TextFormField(
+                      key: ValueKey(0),
+                      onSaved: (value) {
+                        userEmail = value!;
+                      },
+                      onChanged: (value) {
+                        userEmail = value;
+                      },
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -86,6 +99,13 @@ class _LoginFormState extends State<LoginForm> {
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
                     margin: EdgeInsets.only(top: 10.0),
                     child: TextFormField(
+                      key: ValueKey(00),
+                      onSaved: (value) {
+                        userPassword = value!;
+                      },
+                      onChanged: (value) {
+                        userPassword = value;
+                      },
                       obscureText: true, //치고나면 안보이게 설정
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -114,11 +134,21 @@ class _LoginFormState extends State<LoginForm> {
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                      onPressed: () async {
+                        try {
+                          final newUser =
+                              await _authentication.signInWithEmailAndPassword(
+                                  email: userEmail, password: userPassword);
+
+                          if (newUser != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
                       },
                     ),
                     decoration: BoxDecoration(

@@ -13,6 +13,7 @@ class _SignupState extends State<Signup> {
   final _authentication = FirebaseAuth.instance;
 
   final _formKey = GlobalKey<FormState>();
+  //GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String userName = '';
   String userEmail = '';
@@ -60,7 +61,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: _tryValidation,
+                  //onTap: _tryValidation,
                   child: Container(
                     margin: EdgeInsets.only(
                         top: 60.0, left: 30.0, right: 30.0, bottom: 0.0),
@@ -407,55 +408,57 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    _tryValidation();
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 60.0,
-                                        left: 30.0,
-                                        right: 30.0,
-                                        bottom: 0.0),
-                                    width: double.infinity,
-                                    child: FlatButton(
-                                      child: Text(
-                                        '회원가입',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      onPressed: () async {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (_) => LoginForm()));
-                                        _tryValidation();
-                                        try {
-                                          final newUser = await _authentication
-                                              .createUserWithEmailAndPassword(
-                                                  email: userEmail,
-                                                  password: userPassword);
-                                          if (newUser.user != null) {
-                                            showAlert(context);
-                                          }
-                                        } catch (e) {
-                                          print(e);
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(SnackBar(
-                                            content: Text(
-                                                "check your email or password"),
-                                            backgroundColor: Colors.blue,
-                                            duration: Duration(seconds: 1),
-                                          ));
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: 60.0,
+                                      left: 30.0,
+                                      right: 30.0,
+                                      bottom: 0.0),
+                                  width: double.infinity,
+                                  child: FlatButton(
+                                    child: Text(
+                                      '회원가입',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onPressed: () async {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) => LoginForm()));
+                                      _tryValidation();
+                                      try {
+                                        final newUser = await _authentication
+                                            .createUserWithEmailAndPassword(
+                                                email: userEmail,
+                                                password: userPassword);
+                                        if (newUser.user != null) {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) {
+                                          //       return LoginForm();
+                                          //     },
+                                          //   ),
+                                          // );
+                                          showAlert(context);
                                         }
-                                        ;
-
-                                        //showAlert(context);
-                                      },
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue[700],
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                                      } catch (e) {
+                                        print(e);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              "check your email or password"),
+                                          backgroundColor: Colors.blue,
+                                          duration: Duration(seconds: 1),
+                                        ));
+                                      }
+                                      ;
+                                      //showAlert(context);
+                                    },
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue[700],
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ), // SizedBox(height: 00.0,),
                               ],
@@ -644,35 +647,68 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: _tryValidation,
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 60.0,
-                                        left: 30.0,
-                                        right: 30.0,
-                                        bottom: 0.0),
-                                    width: double.infinity,
-                                    child: FlatButton(
-                                      child: Text(
-                                        '회원가입',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      onPressed: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (_) => LoginForm()));
-                                        _tryValidation();
-                                        showAlert(context);
-                                      },
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: 60.0,
+                                      left: 30.0,
+                                      right: 30.0,
+                                      bottom: 0.0),
+                                  width: double.infinity,
+                                  child: FlatButton(
+                                    child: Text(
+                                      '회원가입',
+                                      style: TextStyle(color: Colors.white),
                                     ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue[700],
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
+                                    onPressed: () async {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) => LoginForm()));
+                                      _tryValidation();
+                                      try {
+                                        final newUser = await _authentication
+                                            .createUserWithEmailAndPassword(
+                                                email: userEmail,
+                                                password: userPassword);
+                                        if (newUser.user != null) {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) {
+                                          //       return LoginForm();
+                                          //     },
+                                          //   ),
+                                          // );
+                                          showAlert(context);
+                                        }
+                                      } catch (e) {
+                                        print(e);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              "check your email or password"),
+                                          backgroundColor: Colors.blue,
+                                          duration: Duration(seconds: 1),
+                                        ));
+                                      }
+                                      ;
+                                      //showAlert(context);
+                                    },
+                                    // {
+                                    //   // Navigator.push(
+                                    //   //     context,
+                                    //   //     MaterialPageRoute(
+                                    //   //         builder: (_) => LoginForm()));
+                                    //   _tryValidation();
+                                    //   showAlert(context);
+                                    // },
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue[700],
+                                    borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
+
                                 // SizedBox(height: 00.0,),
                               ],
                             ),
