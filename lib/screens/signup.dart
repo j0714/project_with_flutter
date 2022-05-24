@@ -444,6 +444,7 @@ class _SignupState extends State<Signup> {
                                             content: Text(
                                                 "check your email or password"),
                                             backgroundColor: Colors.blue,
+                                            duration: Duration(seconds: 1),
                                           ));
                                         }
                                         ;
