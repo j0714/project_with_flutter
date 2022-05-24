@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/screens/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -9,6 +10,8 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final _authentication = FirebaseAuth.instance;
+
   final _formKey = GlobalKey<FormState>();
 
   String userName = '';
@@ -116,15 +119,15 @@ class _SignupState extends State<Signup> {
                 ],
               ),
               Expanded(
-                child: Form(
-                  key: _formKey,
-                  child: TabBarView(
-                    children: [
-                      Container(
-                        color: Color(0xffDAE0E8),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Center(
+                child: TabBarView(
+                  children: [
+                    Container(
+                      color: Color(0xffDAE0E8),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Center(
+                          child: Form(
+                            key: _formKey,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,6 +138,7 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 40.0),
                                   child: TextFormField(
+                                    key: ValueKey(1),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return "이름을 입력하세요";
@@ -144,7 +148,9 @@ class _SignupState extends State<Signup> {
                                     onSaved: (value) {
                                       userName = value!;
                                     },
-                                    key: ValueKey(1),
+                                    onChanged: (value) {
+                                      userName = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -170,6 +176,7 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(2),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return "writhe email";
@@ -179,7 +186,9 @@ class _SignupState extends State<Signup> {
                                     onSaved: (value) {
                                       userEmail = value!;
                                     },
-                                    key: ValueKey(2),
+                                    onChanged: (value) {
+                                      userEmail = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -207,10 +216,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(3),
                                     onSaved: (value) {
                                       userPassword = value!;
                                     },
-                                    key: ValueKey(3),
+                                    onChanged: (value) {
+                                      userPassword = value;
+                                    },
                                     obscureText: true, //치고나면 안보이게 설정
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -239,10 +251,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(4),
                                     onSaved: (value) {
                                       userDepartment = value!;
                                     },
-                                    key: ValueKey(4),
+                                    onChanged: (value) {
+                                      userDepartment = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -270,10 +285,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(5),
                                     onSaved: (value) {
                                       userId = value!;
                                     },
-                                    key: ValueKey(5),
+                                    onChanged: (value) {
+                                      userId = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -299,10 +317,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(6),
                                     onSaved: (value) {
                                       userSemester = value!;
                                     },
-                                    key: ValueKey(6),
+                                    onChanged: (value) {
+                                      userSemester = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -328,10 +349,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(7),
                                     onSaved: (value) {
                                       userDoubleMajor = value!;
                                     },
-                                    key: ValueKey(7),
+                                    onChanged: (value) {
+                                      userDoubleMajor = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -357,10 +381,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(8),
                                     onSaved: (value) {
                                       userMinor = value!;
                                     },
-                                    key: ValueKey(8),
+                                    onChanged: (value) {
+                                      userMinor = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -381,7 +408,9 @@ class _SignupState extends State<Signup> {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: _tryValidation,
+                                  onTap: () {
+                                    _tryValidation();
+                                  },
                                   child: Container(
                                     margin: EdgeInsets.only(
                                         top: 60.0,
@@ -394,12 +423,32 @@ class _SignupState extends State<Signup> {
                                         '회원가입',
                                         style: TextStyle(color: Colors.white),
                                       ),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         // Navigator.push(
                                         //     context,
                                         //     MaterialPageRoute(
                                         //         builder: (_) => LoginForm()));
-                                        showAlert(context);
+                                        _tryValidation();
+                                        try {
+                                          final newUser = await _authentication
+                                              .createUserWithEmailAndPassword(
+                                                  email: userEmail,
+                                                  password: userPassword);
+                                          if (newUser.user != null) {
+                                            showAlert(context);
+                                          }
+                                        } catch (e) {
+                                          print(e);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                "check your email or password"),
+                                            backgroundColor: Colors.blue,
+                                          ));
+                                        }
+                                        ;
+
+                                        //showAlert(context);
                                       },
                                     ),
                                     decoration: BoxDecoration(
@@ -413,11 +462,14 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                       ),
-                      Container(
-                        color: Color(0xffDAE0E8),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Center(
+                    ),
+                    Container(
+                      color: Color(0xffDAE0E8),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Center(
+                          child: Form(
+                            key: _formKey,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -428,10 +480,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 40.0),
                                   child: TextFormField(
+                                    key: ValueKey(11),
                                     onSaved: (value) {
                                       userName = value!;
                                     },
-                                    key: ValueKey(11),
+                                    onChanged: (value) {
+                                      userName = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -457,10 +512,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(12),
                                     onSaved: (value) {
                                       userEmail = value!;
                                     },
-                                    key: ValueKey(12),
+                                    onChanged: (value) {
+                                      userEmail = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -488,10 +546,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(13),
                                     onSaved: (value) {
                                       userPassword = value!;
                                     },
-                                    key: ValueKey(13),
+                                    onChanged: (value) {
+                                      userPassword = value;
+                                    },
                                     obscureText: true, //치고나면 안보이게 설정
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -520,10 +581,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(14),
                                     onSaved: (value) {
                                       userDepartment = value!;
                                     },
-                                    key: ValueKey(14),
+                                    onChanged: (value) {
+                                      userDepartment = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -551,10 +615,13 @@ class _SignupState extends State<Signup> {
                                       horizontal: 20.0), //가로여백설정
                                   margin: EdgeInsets.only(top: 10.0),
                                   child: TextFormField(
+                                    key: ValueKey(15),
                                     onSaved: (value) {
                                       userIdentity = value!;
                                     },
-                                    key: ValueKey(15),
+                                    onChanged: (value) {
+                                      userIdentity = value;
+                                    },
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -595,6 +662,7 @@ class _SignupState extends State<Signup> {
                                         //     context,
                                         //     MaterialPageRoute(
                                         //         builder: (_) => LoginForm()));
+                                        _tryValidation();
                                         showAlert(context);
                                       },
                                     ),
@@ -610,8 +678,8 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
