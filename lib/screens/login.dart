@@ -72,6 +72,7 @@ class _LoginFormState extends State<LoginForm> {
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
                     margin: EdgeInsets.only(top: 10.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       key: ValueKey(0),
                       onSaved: (value) {
                         userEmail = value!;

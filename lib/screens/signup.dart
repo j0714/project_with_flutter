@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -190,6 +191,7 @@ class _SignupState extends State<Signup> {
                                     onChanged: (value) {
                                       userEmail = value;
                                     },
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -421,25 +423,28 @@ class _SignupState extends State<Signup> {
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () async {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (_) => LoginForm()));
+
                                       _tryValidation();
                                       try {
                                         final newUser = await _authentication
                                             .createUserWithEmailAndPassword(
                                                 email: userEmail,
                                                 password: userPassword);
+
+                                        await FirebaseFirestore.instance
+                                            .collection('user')
+                                            .doc(newUser.user!.uid)
+                                            .set({
+                                          'userName': userName,
+                                          'email': userEmail,
+                                          'department': userDepartment,
+                                          'studentId': userId,
+                                          'semester': userSemester,
+                                          'doubleMajor': userDoubleMajor,
+                                          'minor': userMinor,
+                                        });
+
                                         if (newUser.user != null) {
-                                          // Navigator.push(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) {
-                                          //       return LoginForm();
-                                          //     },
-                                          //   ),
-                                          // );
                                           showAlert(context);
                                         }
                                       } catch (e) {
@@ -453,7 +458,6 @@ class _SignupState extends State<Signup> {
                                         ));
                                       }
                                       ;
-                                      //showAlert(context);
                                     },
                                   ),
                                   decoration: BoxDecoration(
@@ -523,6 +527,7 @@ class _SignupState extends State<Signup> {
                                     onChanged: (value) {
                                       userEmail = value;
                                     },
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(

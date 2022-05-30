@@ -1,6 +1,8 @@
 import 'package:ui_1/color/shareColor.dart';
 import 'package:ui_1/model/chatMessage.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatDetailPage extends StatefulWidget {
   @override
@@ -10,6 +12,9 @@ class ChatDetailPage extends StatefulWidget {
 class _ChatDetailPageState extends State<ChatDetailPage> {
   TextEditingController _textEditingController = TextEditingController();
   List<ChatMessage> _chats = [];
+
+  final _authentication = FirebaseAuth.instance;
+  User? loggedUser;
 
   @override
   Widget build(BuildContext context) {
