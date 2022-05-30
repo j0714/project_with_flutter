@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/privacy_detail.dart';
-import 'package:ui_1/screen/signup.dart';
+import 'package:ui_1/screen/signuptest.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -9,29 +9,23 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final _authentication = FirebaseAuth.instance;
 
-  void login_text(){
-    ThemeData(
-      inputDecorationTheme: InputDecorationTheme(
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.transparent),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderSide: BorderSide(color: Colors.blue),
-        ),
-      ),
-    );
-  }
+  String userEmail = '';
+  String userPassword = '';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GestureDetector(
+        onTap: () {
+      FocusScope.of(context).unfocus();
+    },
+    child: Scaffold(
       appBar: AppBar(title: const Text('개척Talk', style: TextStyle(color: Colors.black),),
         centerTitle: true,
         toolbarHeight: 60.0,
         backgroundColor: Color(0xff5D8AB7),
+        automaticallyImplyLeading: false, // 화살표 버튼 삭제
       ),
        body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -60,7 +54,15 @@ class _LoginFormState extends State<LoginForm> {
                       margin: EdgeInsets.only(top: 10.0),
                       child: Column(
                         children: <Widget>[
-                          TextField(decoration: InputDecoration(
+                          TextField(
+                            key: ValueKey(0),
+                            onSaved: (value) {
+                              userEmail = value!;
+                            },
+                            onChanged: (value) {
+                              userEmail = value;
+                            },
+                            decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             hintText: 'User Email',
                             fillColor: Colors.grey[50],
@@ -68,6 +70,13 @@ class _LoginFormState extends State<LoginForm> {
                           ),),
                           SizedBox(height: 10.0,),
                           TextField(
+                            key: ValueKey(00),
+                            onSaved: (value) {
+                              userPassword = value!;
+                            },
+                            onChanged: (value) {
+                              userPassword = value;
+                            },
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock),
@@ -88,10 +97,22 @@ class _LoginFormState extends State<LoginForm> {
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: (){
-                        // Navigator.push(context,
-                        //   MaterialPageRoute(builder: (_)=> HomePage()));
-                        },
+                      onPressed: () async {
+                        try {
+                          final newUser =
+                          await _authentication.signInWithEmailAndPassword(
+                              email: userEmail, password: userPassword);
+
+                          if (newUser != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
                     ),
                     decoration: BoxDecoration(
                       color: Colors.blue[700],
@@ -122,7 +143,8 @@ class _LoginFormState extends State<LoginForm> {
                     child: TextButton(
                       child: Text(
                       '비밀번호를 잊으셨나요?',
-                      style: TextStyle(color: Colors.blue[700]), textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.blue[700]),
+                        textAlign: TextAlign.center,
                       ),
                       onPressed: (){
                         Navigator.push(context,
@@ -136,6 +158,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           )
       ),
+    ),
     );
   }
 }
