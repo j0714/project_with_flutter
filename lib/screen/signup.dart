@@ -66,7 +66,7 @@ class _SignupState extends State<Signup> {
                     margin: EdgeInsets.only(
                         top: 60.0, left: 30.0, right: 30.0, bottom: 0.0),
                     width: double.infinity,
-                    child: FlatButton(
+                    child: TextButton(
                       child: Text(
                         '로그인하러 가기',
                         style: TextStyle(color: Colors.white),
@@ -325,7 +325,7 @@ class _SignupState extends State<Signup> {
                                       right: 30.0,
                                       bottom: 0.0),
                                   width: double.infinity,
-                                  child: FlatButton(
+                                  child: TextButton(
                                     child: Text(
                                       '회원가입',
                                       style: TextStyle(color: Colors.white),
@@ -509,7 +509,7 @@ class _SignupState extends State<Signup> {
                                       right: 30.0,
                                       bottom: 0.0),
                                   width: double.infinity,
-                                  child: FlatButton(
+                                  child: TextButton(
                                     child: Text(
                                       '회원가입',
                                       style: TextStyle(color: Colors.white),
