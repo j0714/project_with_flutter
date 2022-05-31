@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_1/screens/login.dart';
+import 'package:ui_1/screen/login.dart';
 import 'package:ui_1/screen/privacy_detail.dart';
 
 class Privacy extends StatefulWidget {

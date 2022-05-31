@@ -1,7 +1,6 @@
-import 'package:ui_1/screen/noticeSettingDetailPage.dart';
+import 'package:ui_1/screen/notice_setting.dart';
 import 'package:ui_1/screen/notificationDetailPage.dart';
 import 'package:ui_1/screen/privacy.dart';
-import 'package:ui_1/screen/privacyDetailPage.dart';
 import 'package:flutter/material.dart';
 
 class SettingList extends StatefulWidget {
@@ -28,7 +27,7 @@ class _SettingListState extends State<SettingList> {
               if (widget.name == 'Privacy') {
                 return Privacy();
               } else if (widget.name == 'Notice Setting') {
-                return NoticeSettingPage();
+                return Notice_Setting();
               } else {
                 return NotificationsPage();
               }
