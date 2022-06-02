@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:ui_1/screen/privacy_detail.dart';
 import 'package:ui_1/screen/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -140,7 +141,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: 5.0, left: 30.0, right: 30.0, bottom: 30.0),
+                        top: 5.0, left: 30.0, right: 30.0,),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -157,8 +158,22 @@ class _LoginFormState extends State<LoginForm> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10.0),
+                    width: double.infinity,
+                    child: TextButton(
+                      child: Text(
+                        '비밀번호를 잊으셨나요?',
+                        style: TextStyle(color: Colors.blue[700]), textAlign: TextAlign.center,
+                      ),
+                      onPressed: (){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_)=> Privacy_detail()));
+                      },
+                    ),
+                  ),
                   SizedBox(
-                    height: 200.0,
+                    height: 155.0,
                   ),
                 ],
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/color/shareColor.dart';
-import 'package:ui_1/screen/login.dart';
+import 'package:ui_1/screen/new_password.dart';
 
 class Privacy_detail extends StatefulWidget {
   @override
@@ -87,7 +87,7 @@ class _Privacy_detailState extends State<Privacy_detail> {
                     ),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => LoginForm()));
+                          MaterialPageRoute(builder: (_) => new_password()));
                     },
                   ),
                   decoration: BoxDecoration(

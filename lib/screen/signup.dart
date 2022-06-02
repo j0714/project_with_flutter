@@ -320,7 +320,7 @@ class _SignupState extends State<Signup> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: 60.0,
+                                      top: 50.0,
                                       left: 30.0,
                                       right: 30.0,
                                       bottom: 0.0),
