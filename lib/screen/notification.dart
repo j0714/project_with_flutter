@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatefulWidget {
+class notification extends StatefulWidget {
 
 
   @override
-  State<SettingPage> createState() => _SettingPageState();
+  State<notification> createState() => _notificationState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+
+class _notificationState extends State<notification> {
 
   var switchW1 = false;
   var switchW2 = false;
@@ -25,7 +26,6 @@ class _SettingPageState extends State<SettingPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           // 화살표 버튼 삭제
           title: Text(
             '개척Talk',
@@ -41,7 +41,7 @@ class _SettingPageState extends State<SettingPage> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            color: Colors.white,
+            color: Color(0xffDAE0E8),
             padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
             child: Center(
               child: Column(
@@ -53,7 +53,7 @@ class _SettingPageState extends State<SettingPage> {
                       children: [
                         Container(
                           width: 400.0,
-                          margin: EdgeInsets.only(top: 20.0, bottom: 10.0),
+                          margin: EdgeInsets.only(top: 30.0, bottom: 10.0),
                           child: Text('전체 알림'),
                         ),
                         Row(
@@ -70,7 +70,7 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Row(
                           children: [
                             Container(
@@ -85,10 +85,10 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Container(
                           width: 400.0,
-                          margin: EdgeInsets.only(top: 40.0, bottom: 10.0),
+                          margin: EdgeInsets.only(top: 50.0, bottom: 10.0),
                           child: Text('새 메시지 알림'),
                         ),
                         Row(
@@ -105,7 +105,7 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Row(
                           children: [
                             Container(
@@ -120,17 +120,17 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Container(
                           width: 400.0,
-                          margin: EdgeInsets.only(top: 40.0, bottom: 10.0),
+                          margin: EdgeInsets.only(top: 50.0, bottom: 10.0),
                           child: Text('공지 알림'),
                         ),
                         Row(
                           children: [
                             Container(
                               width: 290.0,
-                              child: Text('메시지 알림', style: TextStyle(fontSize: 18.0),),
+                              child: Text('메시지 알림', style: TextStyle(fontSize: 18.0 )),
                             ),
                             Switch(
                                 value: switchN1,
@@ -140,7 +140,7 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Row(
                           children: [
                             Container(
@@ -155,7 +155,8 @@ class _SettingPageState extends State<SettingPage> {
                                   });
                                 })],
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white, thickness: 1.0),
+                        SizedBox(height: 100.0,),
                       ],
 
                     )
