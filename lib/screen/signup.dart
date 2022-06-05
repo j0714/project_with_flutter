@@ -183,8 +183,9 @@ class _SignupState extends State<Signup> {
                                     child: TextFormField(
                                       key: ValueKey(2),
                                       validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "writhe email";
+                                        if (value!.isEmpty ||
+                                            value.contains('@gnu.ac.kr')) {
+                                          return "학교 이메일을 입력하세요";
                                         } else
                                           return null;
                                       },
@@ -208,6 +209,13 @@ class _SignupState extends State<Signup> {
                                     margin: EdgeInsets.only(top: 10.0),
                                     child: TextFormField(
                                       key: ValueKey(3),
+                                      validator: (value) {
+                                        if (value!.isEmpty ||
+                                            value.length < 6) {
+                                          return "비밀번호는 6글자 이상";
+                                        }
+                                        return null;
+                                      },
                                       onSaved: (value) {
                                         userPassword = value!;
                                       },
@@ -453,6 +461,13 @@ class _SignupState extends State<Signup> {
                                     margin: EdgeInsets.only(top: 10.0),
                                     child: TextFormField(
                                       key: ValueKey(13),
+                                      validator: (value) {
+                                        if (value!.isEmpty ||
+                                            value.length < 6) {
+                                          return "비밀번호는 6자리 이상";
+                                        } else
+                                          return null;
+                                      },
                                       onSaved: (value) {
                                         userPassword = value!;
                                       },

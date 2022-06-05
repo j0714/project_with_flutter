@@ -56,6 +56,12 @@ class _LoginFormState extends State<LoginForm> {
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       key: ValueKey(0),
+                      validator: (value) {
+                        if (value!.isEmpty || value.contains('@gnu.ac.kr')) {
+                          return "학교 이메일을 입력하세요";
+                        } else
+                          return null;
+                      },
                       onSaved: (value) {
                         userEmail = value!;
                       },
@@ -83,6 +89,12 @@ class _LoginFormState extends State<LoginForm> {
                     margin: EdgeInsets.only(top: 10.0),
                     child: TextFormField(
                       key: ValueKey(00),
+                      validator: (value) {
+                        if (value!.isEmpty || value.length < 6) {
+                          return "비밀번호는 6자리 이상";
+                        } else
+                          return null;
+                      },
                       onSaved: (value) {
                         userPassword = value!;
                       },
@@ -120,8 +132,8 @@ class _LoginFormState extends State<LoginForm> {
                       onPressed: () async {
                         try {
                           final newUser =
-                          await _authentication.signInWithEmailAndPassword(
-                              email: userEmail, password: userPassword);
+                              await _authentication.signInWithEmailAndPassword(
+                                  email: userEmail, password: userPassword);
 
                           if (newUser != null) {
                             Navigator.push(
@@ -141,7 +153,10 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: 5.0, left: 30.0, right: 30.0,),
+                      top: 5.0,
+                      left: 30.0,
+                      right: 30.0,
+                    ),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -164,11 +179,14 @@ class _LoginFormState extends State<LoginForm> {
                     child: TextButton(
                       child: Text(
                         '비밀번호를 잊으셨나요?',
-                        style: TextStyle(color: Colors.blue[700]), textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.blue[700]),
+                        textAlign: TextAlign.center,
                       ),
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_)=> Privacy_detail()));
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => Privacy_detail()));
                       },
                     ),
                   ),
