@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,9 +12,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _authentication = FirebaseAuth.instance;
-
   final _formKey = GlobalKey<FormState>();
-  //GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String userName = '';
   String userEmail = '';
@@ -195,6 +194,7 @@ class _SignupState extends State<Signup> {
                                       onChanged: (value) {
                                         userEmail = value;
                                       },
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
                                         hintText: '이메일',
                                         fillColor: Colors.grey[50],
@@ -353,6 +353,21 @@ class _SignupState extends State<Signup> {
                                               .createUserWithEmailAndPassword(
                                                   email: userEmail,
                                                   password: userPassword);
+
+                                          await FirebaseFirestore.instance
+                                              .collection('user')
+                                              .doc(newUser.user!.uid)
+                                              .set({
+                                            'userName': userName,
+                                            'userID': userId,
+                                            'userEmail': userEmail,
+                                            'userDepartment': userDepartment,
+                                            'userSemester': userSemester,
+                                            'userDoubleMajor': userDoubleMajor,
+                                            'userMinor': userMinor,
+                                            'userIdentity': userIdentity
+                                          });
+
                                           if (newUser.user != null) {
                                             // Navigator.push(
                                             //   context,
@@ -447,6 +462,7 @@ class _SignupState extends State<Signup> {
                                       onChanged: (value) {
                                         userEmail = value;
                                       },
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
                                         hintText: '이메일',
                                         fillColor: Colors.grey[50],
@@ -545,6 +561,21 @@ class _SignupState extends State<Signup> {
                                               .createUserWithEmailAndPassword(
                                                   email: userEmail,
                                                   password: userPassword);
+
+                                          await FirebaseFirestore.instance
+                                              .collection('user')
+                                              .doc(newUser.user!.uid)
+                                              .set({
+                                            'userName': userName,
+                                            'userID': userId,
+                                            'userEmail': userEmail,
+                                            'userDepartment': userDepartment,
+                                            'userSemester': userSemester,
+                                            'userDoubleMajor': userDoubleMajor,
+                                            'userMinor': userMinor,
+                                            'userIdentity': userIdentity
+                                          });
+
                                           if (newUser.user != null) {
                                             // Navigator.push(
                                             //   context,
