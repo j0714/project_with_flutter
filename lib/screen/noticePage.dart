@@ -30,10 +30,10 @@ class _NoticePageState extends State<NoticePage> {
         name: "이도흠",
         noticeTitle: '이거는 제목임',
         noticeText: '길이 아니라 이 정도 길이는 어떻게 되는지 정말 궁금한데 이거 그대로 상자 크기만 커지만 ㄹㅇ 너무 대박인데 Expaned라서 옆으로만 커지는 거 아닌가 모르겠넹',
-        imageURL: 'images/home.png',
+        imageURL: '',
         time: '오후 5:00'),
     NoticeModels(
-        name: "이도흠",
+        name: "이도",
         noticeTitle: '이거는 제목임',
         noticeText: '길이 아니라 이 정도 길이는 어떻게 되는지 정말 궁금한데 이거 그대로 상자 크기만 커지만 ㄹㅇ 너무 대박인데 Expaned라서 옆으로만 커지는 거 아닌가 모르겠넹',
         imageURL: 'images/home.png',
@@ -132,6 +132,7 @@ class _NoticePageState extends State<NoticePage> {
               ListView.builder(
                 itemCount: noticeModels.length,
                 shrinkWrap: true,
+                reverse: true,
                 padding: EdgeInsets.only(top : 16),
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {

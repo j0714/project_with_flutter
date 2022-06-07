@@ -1,5 +1,6 @@
 import 'package:ui_1/screen/chatDetailPage.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_1/screen/chatScreen.dart';
 
 class ConversationList extends StatefulWidget {
   String name;
@@ -26,7 +27,8 @@ class _ConversationListState extends State<ConversationList> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return ChatDetailPage();
+              // return ChatDetailPage();
+              return ChatScreen();
             },
           ),
         );
