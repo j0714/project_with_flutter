@@ -29,9 +29,9 @@ class csMessage extends StatelessWidget {
             itemCount: chatDocs.length,
             itemBuilder: (context, index) {
               return csChatDecoration(
-                chatDocs[index]['text'],
-                chatDocs[index]['userID'].toString() == user!.uid,
-              );
+                  chatDocs[index].data()['text'],
+                  chatDocs[index].data()['userID'].toString() == user!.uid,
+                  chatDocs[index].data()['userName'].toString());
             });
       },
     );

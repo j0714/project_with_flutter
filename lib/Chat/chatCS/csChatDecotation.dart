@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class csChatDecoration extends StatelessWidget {
-  const csChatDecoration(this.message, this.isMe, {Key? key}) : super(key: key);
+  const csChatDecoration(this.message, this.isMe, this.userName, {Key? key})
+      : super(key: key);
 
   final String message;
   final bool isMe;
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,17 @@ class csChatDecoration extends StatelessWidget {
           width: 145,
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-          child: Text(
-            message,
-            style: TextStyle(color: isMe ? Colors.black : Colors.white),
-          ),
+          child: Column(children: [
+            Text(
+              userName,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+            Text(
+              message,
+              style: TextStyle(color: isMe ? Colors.black : Colors.white),
+            ),
+          ]),
         ),
       ],
     );

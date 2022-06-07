@@ -10,11 +10,10 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
-
   final _controller = TextEditingController();
   var _userEnterMessage = '';
 
-  void _sendMessage(){
+  void _sendMessage() {
     FocusScope.of(context).unfocus();
     final user = FirebaseAuth.instance.currentUser;
     FirebaseFirestore.instance.collection('test1').add({
