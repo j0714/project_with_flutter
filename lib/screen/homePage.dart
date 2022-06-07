@@ -1,6 +1,6 @@
 import 'package:ui_1/color/shareColor.dart';
 import 'package:ui_1/screen/chatPage.dart';
-import 'package:ui_1/screen/noticePage.dart';
+import 'package:ui_1/Notice/noticePage.dart';
 import 'package:ui_1/screen/settingPage.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
                 child: ChatPage(),
               ),
               Center(
+                // child: NoticePage(),
                 child: NoticePage(),
               ),
               Center(

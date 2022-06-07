@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ui_1/model/bubble.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ui_1/Notice/noticeModel.dart';
 
-class Messages extends StatelessWidget {
-  const Messages({Key? key}) : super(key: key);
+
+class NewNotices extends StatelessWidget {
+  const NewNotices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    final user = FirebaseAuth.instance.currentUser;
-
     return StreamBuilder(
       stream: FirebaseFirestore.instance
-          .collection('test1')
+          .collection('notice')
           .orderBy('time', descending: true)
           .snapshots(),
       builder: (context,
@@ -24,15 +21,15 @@ class Messages extends StatelessWidget {
           );
         }
 
-        final chatDocs = snapshot.data!.docs;
+        final noticeDocs = snapshot.data!.docs;
 
         return ListView.builder(
-          reverse: true,
-          itemCount: chatDocs.length,
+          // reverse: true,
+          itemCount: noticeDocs.length,
           itemBuilder: (context, index) {
-            return ChatBubble(
-              chatDocs[index]['text'],
-              chatDocs[index]['userId'].toString() == user!.uid,
+            return NoticeModel(
+              noticeDocs[index]['noticeTitle'],
+              noticeDocs[index]['noticeText'],
             );
           },
         );
