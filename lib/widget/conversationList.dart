@@ -1,3 +1,4 @@
+import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
 import 'package:ui_1/screen/chatDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/chatScreen.dart';
@@ -28,7 +29,7 @@ class _ConversationListState extends State<ConversationList> {
           MaterialPageRoute(
             builder: (context) {
               // return ChatDetailPage();
-              return ChatScreen();
+              return csChatScreen();
             },
           ),
         );
