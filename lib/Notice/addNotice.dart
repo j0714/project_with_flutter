@@ -11,20 +11,41 @@ class AddNotice extends StatefulWidget {
 }
 
 class _AddNoticeState extends State<AddNotice> {
-
   var _addTitle = '';
   var _addText = '';
 
-  void _sendNotice() async{
+  void _snackBarMessage() {  //스낵바 활용
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Expanded(
+          child: Text('Done'),
+        ),
+        duration: Duration(
+          seconds: 2,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        behavior: SnackBarBehavior.floating, //바닥과 공간 두는 기능
+      ),
+    );
+  }
+
+  void _sendNotice() async {
     final user = FirebaseAuth.instance.currentUser;
-    final userData = await FirebaseFirestore.instance.collection('user').doc(user!.uid).get();
+    final userData = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(user!.uid)
+        .get();
     FirebaseFirestore.instance.collection('notice').add({
-      'noticeTitle' : _addTitle,
-      'noticeText' : _addText,
-      'time' : Timestamp.now(),
-      'dateTime' : Timestamp.now().toDate().toString(),
-      'userName' : userData.data()!['userName'],
+      'noticeTitle': _addTitle,
+      'noticeText': _addText,
+      'time': Timestamp.now(),
+      'dateTime': Timestamp.now().toDate().toString(),
+      'userName': userData.data()!['userName'],
     });
+    Navigator.pop(context);
+    _snackBarMessage();
   }
 
   @override
@@ -148,16 +169,23 @@ class _AddNoticeState extends State<AddNotice> {
                     children: [
                       GestureDetector(
                         // onTap: _addText.trim().isEmpty || _addTitle.trim().isEmpty ? null : (){}
-                        onTap: _addTitle.trim().isEmpty || _addText.trim().isEmpty ? null : _sendNotice,
+                        onTap:
+                            _addTitle.trim().isEmpty || _addText.trim().isEmpty
+                                ? null
+                                : _sendNotice,
                         // onTap: _sendNotice,
                         child: Container(
                           padding: EdgeInsets.only(
                               left: 8, right: 8, top: 2, bottom: 2),
                           height: 30,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              // color: ColorSet.appBarColor),
-                              color : _addTitle.trim().isEmpty || _addText.trim().isEmpty ? Colors.grey : ColorSet.appBarColor,),
+                            borderRadius: BorderRadius.circular(30),
+                            // color: ColorSet.appBarColor),
+                            color: _addTitle.trim().isEmpty ||
+                                    _addText.trim().isEmpty
+                                ? Colors.grey
+                                : ColorSet.appBarColor,
+                          ),
                           child: Row(
                             children: <Widget>[
                               Icon(

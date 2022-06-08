@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NoticeModel extends StatelessWidget {
-  const NoticeModel(this.noticeTitle, this.noticeText, this.userName, this.noticeTime, {Key? key})
+  const NoticeModel(
+      this.noticeTitle, this.noticeText, this.userName, this.noticeTime,
+      {Key? key})
       : super(key: key);
 
   final String noticeTitle;
@@ -11,10 +13,45 @@ class NoticeModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _showBottomSheet() {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return SafeArea(
+              child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.delete_outline),
+                title: Text('Delete'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.edit_outlined),
+                title: Text('Edit'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Setting'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.share),
+                title: Text('Share'),
+                onTap: () {},
+              ),
+            ],
+          ));
+        },
+      );
+    }
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.white70,
+        color: Colors.white70, // 이게 배경색입니다.
+        // color: Colors.amber,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
       padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
@@ -64,7 +101,10 @@ class NoticeModel extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(Icons.delete),
+                IconButton(
+                  onPressed: _showBottomSheet,
+                  icon: Icon(Icons.more_horiz),
+                )
               ],
             ),
           ),
