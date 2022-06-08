@@ -1,5 +1,5 @@
 import 'package:ui_1/screen/notice_setting.dart';
-import 'package:ui_1/screen/notificationDetailPage.dart';
+import 'package:ui_1/screen/notification.dart';
 import 'package:ui_1/screen/privacy.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class _SettingListState extends State<SettingList> {
               } else if (widget.name == 'Notice Setting') {
                 return Notice_Setting();
               } else {
-                return NotificationsPage();
+                return notification();
               }
             },
           ),

@@ -102,14 +102,18 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
         ),
-        body: Container(
-          child: Column(
-            children: [
-              Expanded(
-                child: Messages(),
-              ),
-              NewMessage(),
-            ],
+        body: SafeArea(
+          child: Container(
+            // decoration: BoxDecoration(color: Colors.white),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Messages(),
+                ),
+                NewMessage(),
+                // SizedBox(height: 20,)
+              ],
+            ),
           ),
         ),
       ),

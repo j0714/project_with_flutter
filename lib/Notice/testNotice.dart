@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/color/shareColor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,17 +11,42 @@ class AddNotice extends StatefulWidget {
 }
 
 class _AddNoticeState extends State<AddNotice> {
-  final _authentication = FirebaseAuth.instance;
-  // final _formKey = GlobalKey<FormState>();
-  String addTitle = '';
-  String addText = '';
+  var _addTitle = '';
+  var _addText = '';
 
-  // void _tryValidation(){
-  //   final isValid = _formKey.currentState!.validate();
-  //   if(isValid){
-  //     _formKey.currentState!.save();
-  //   }
-  // }
+  void _snackBarMessage() {  //스낵바 활용
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Expanded(
+          child: Text('Done'),
+        ),
+        duration: Duration(
+          seconds: 2,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        behavior: SnackBarBehavior.floating, //바닥과 공간 두는 기능
+      ),
+    );
+  }
+
+  void _sendNotice() async {
+    final user = FirebaseAuth.instance.currentUser;
+    final userData = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(user!.uid)
+        .get();
+    FirebaseFirestore.instance.collection('notice').add({
+      'noticeTitle': _addTitle,
+      'noticeText': _addText,
+      'time': Timestamp.now(),
+      'dateTime': Timestamp.now().toDate().toString(),
+      'userName': userData.data()!['userName'],
+    });
+    Navigator.pop(context);
+    _snackBarMessage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,27 +104,20 @@ class _AddNoticeState extends State<AddNotice> {
                   SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    key: ValueKey(1),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please write notice!';
-                      } else
-                        return null;
-                    },
-                    onSaved: (value) {
-                      addTitle = value!;
-                    },
+                  TextField(
+                    textInputAction: TextInputAction.next,
                     onChanged: (value) {
-                      addTitle = value;
+                      setState(() {
+                        _addTitle = value;
+                      });
                     },
                     decoration: InputDecoration(
                       hintText: 'Notice title',
                       hintStyle: TextStyle(fontWeight: FontWeight.bold),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
+                      // enabledBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.all(Radius.circular(8)),
+                      //   borderSide: BorderSide(color: Colors.blue),
+                      // ),
                       border: InputBorder.none,
                       filled: true,
                       fillColor: Colors.white,
@@ -107,50 +126,47 @@ class _AddNoticeState extends State<AddNotice> {
                   SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    key: ValueKey(2),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please write notice!';
-                      } else
-                        return null;
-                    },
-                    onSaved: (value) {
-                      addText = value!;
-                    },
+                  Container(height: 400,
+                  padding: EdgeInsets.only(top: 8),
+                  decoration: BoxDecoration(color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
+                  child : TextField(
+                    // textInputAction: TextInputAction.done,
                     onChanged: (value) {
-                      addText = value;
+                      _addText = value;
                     },
                     decoration: InputDecoration(
                       hintText: 'Write notice',
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
+                      // enabledBorder: OutlineInputBorder(
+                      //   borderRadius: BorderRadius.all(Radius.circular(8),),
+                      //   borderSide: BorderSide(color: Colors.blue),
+                      // ),
                       border: InputBorder.none,
                       filled: true,
                       fillColor: Colors.white,
                     ),
-                    maxLines: 20,
-                  ),
+                    maxLines: null,
+                  ),),
                   SizedBox(height: 20),
                   Row(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          // _tryValidation();
-                          print(addTitle);
-                          print(addText);
-                        },
+                        onTap:
+                            _addTitle.trim().isEmpty || _addText.trim().isEmpty // 둘 중 하나라도 비어있으면 실행 안되게
+                                ? null
+                                : _sendNotice,
                         child: Container(
                           padding: EdgeInsets.only(
                               left: 8, right: 8, top: 2, bottom: 2),
                           height: 30,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: ColorSet.appBarColor),
+                            borderRadius: BorderRadius.circular(30),
+                            color: _addTitle.trim().isEmpty ||
+                                    _addText.trim().isEmpty
+                                ? Colors.grey
+                                : ColorSet.appBarColor,
+                          ),
                           child: Row(
                             children: <Widget>[
                               Icon(
@@ -172,13 +188,6 @@ class _AddNoticeState extends State<AddNotice> {
                             ],
                           ),
                         ),
-                        // Row(
-                        //   // crossAxisAlignment: CrossAxisAlignment.end,
-                        //   mainAxisAlignment: MainAxisAlignment.end,
-                        //   children: [
-                        //     IconButton(onPressed: () {}, icon: Icon(Icons.bento_sharp))
-                        //   ],
-                        // )
                       ),
                     ],
                   ),

@@ -156,7 +156,7 @@ class _notificationState extends State<notification> {
                                 })],
                         ),
                         const Divider(color: Colors.white, thickness: 1.0),
-                        SizedBox(height: 100.0,),
+                        SizedBox(height: 30.0,),
                       ],
 
                     )
