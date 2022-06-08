@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/color/shareColor.dart';
@@ -150,16 +148,16 @@ class _AddNoticeState extends State<AddNotice> {
                     children: [
                       GestureDetector(
                         // onTap: _addText.trim().isEmpty || _addTitle.trim().isEmpty ? null : (){}
-                        // onTap: _addTitle.trim().isEmpty || _addText.trim().isEmpty ? null : _sendNotice,
-                        onTap: _sendNotice,
+                        onTap: _addTitle.trim().isEmpty || _addText.trim().isEmpty ? null : _sendNotice,
+                        // onTap: _sendNotice,
                         child: Container(
                           padding: EdgeInsets.only(
                               left: 8, right: 8, top: 2, bottom: 2),
                           height: 30,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: ColorSet.appBarColor),
-                              // color : _addTitle.trim().isEmpty || _addText.trim().isEmpty ? Colors.grey[300] : ColorSet.appBarColor,),
+                              // color: ColorSet.appBarColor),
+                              color : _addTitle.trim().isEmpty || _addText.trim().isEmpty ? Colors.grey : ColorSet.appBarColor,),
                           child: Row(
                             children: <Widget>[
                               Icon(
