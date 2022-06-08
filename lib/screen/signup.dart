@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -377,6 +378,8 @@ class _SignupState extends State<Signup> {
                                             //     },
                                             //   ),
                                             // );
+                                            await newUser.user
+                                                ?.sendEmailVerification();
                                             showAlert(context);
                                           }
                                         } catch (e) {
@@ -585,6 +588,8 @@ class _SignupState extends State<Signup> {
                                             //     },
                                             //   ),
                                             // );
+                                            await newUser.user
+                                                ?.sendEmailVerification();
                                             showAlert(context);
                                           }
                                         } catch (e) {

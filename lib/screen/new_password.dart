@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/login.dart';
@@ -10,6 +11,8 @@ class new_password extends StatefulWidget {
 
 class _new_password_detailState extends State<new_password> {
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
