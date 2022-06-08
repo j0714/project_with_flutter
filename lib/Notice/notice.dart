@@ -30,6 +30,8 @@ class NewNotices extends StatelessWidget {
             return NoticeModel(
               noticeDocs[index]['noticeTitle'],
               noticeDocs[index]['noticeText'],
+              noticeDocs[index]['userName'],
+              noticeDocs[index]['time'].toString(),
             );
           },
         );

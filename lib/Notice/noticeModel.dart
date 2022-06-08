@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class NoticeModel extends StatelessWidget {
-  const NoticeModel(this.noticeTitle, this.noticeText, {Key? key})
+  const NoticeModel(this.noticeTitle, this.noticeText, this.userName, this.noticeTime, {Key? key})
       : super(key: key);
 
   final String noticeTitle;
   final String noticeText;
+  final String userName;
+  final String noticeTime;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,8 @@ class NoticeModel extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '이름',
+                                userName,
+                                // '이름',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
@@ -48,7 +51,8 @@ class NoticeModel extends StatelessWidget {
                                 height: 6,
                               ),
                               Text(
-                                '시간',
+                                // '시간',
+                                noticeTime,
                                 style: TextStyle(
                                   fontSize: 12,
                                 ),

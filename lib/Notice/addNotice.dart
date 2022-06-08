@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/color/shareColor.dart';
@@ -15,11 +17,15 @@ class _AddNoticeState extends State<AddNotice> {
   var _addTitle = '';
   var _addText = '';
 
-  void _sendNotice(){
+  void _sendNotice() async{
+    final user = FirebaseAuth.instance.currentUser;
+    final userData = await FirebaseFirestore.instance.collection('user').doc(user!.uid).get();
     FirebaseFirestore.instance.collection('notice').add({
       'noticeTitle' : _addTitle,
       'noticeText' : _addText,
       'time' : Timestamp.now(),
+      'dateTime' : Timestamp.now().toDate().toString(),
+      'userName' : userData.data()!['userName'],
     });
   }
 
@@ -144,6 +150,7 @@ class _AddNoticeState extends State<AddNotice> {
                     children: [
                       GestureDetector(
                         // onTap: _addText.trim().isEmpty || _addTitle.trim().isEmpty ? null : (){}
+                        // onTap: _addTitle.trim().isEmpty || _addText.trim().isEmpty ? null : _sendNotice,
                         onTap: _sendNotice,
                         child: Container(
                           padding: EdgeInsets.only(
@@ -152,6 +159,7 @@ class _AddNoticeState extends State<AddNotice> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: ColorSet.appBarColor),
+                              // color : _addTitle.trim().isEmpty || _addText.trim().isEmpty ? Colors.grey[300] : ColorSet.appBarColor,),
                           child: Row(
                             children: <Widget>[
                               Icon(
