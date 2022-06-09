@@ -356,7 +356,7 @@ class _SignupState extends State<Signup> {
                                                   password: userPassword);
 
                                           await FirebaseFirestore.instance
-                                              .collection('user')
+                                              .collection('student')
                                               .doc(newUser.user!.uid)
                                               .set({
                                             'userName': userName,
@@ -566,7 +566,7 @@ class _SignupState extends State<Signup> {
                                                   password: userPassword);
 
                                           await FirebaseFirestore.instance
-                                              .collection('user')
+                                              .collection('admin')
                                               .doc(newUser.user!.uid)
                                               .set({
                                             'userName': userName,
