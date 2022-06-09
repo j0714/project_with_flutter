@@ -24,19 +24,24 @@ class _csNewMessageState extends State<csNewMessage> {
         .collection('student')
         .doc(user.uid)
         .get();
-    if(userData != null){
-    FirebaseFirestore.instance.collection('chatCS').add({
-      'text': _userEnterMessage,
-      'time': Timestamp.now(),
-      'userID': user.uid,
-      'userName': userData.data()!['userName'],
-    });} else if(userData2 != null){
-       FirebaseFirestore.instance.collection('chatCS').add({
-      'text': _userEnterMessage,
-      'time': Timestamp.now(),
-      'userID': user.uid,
-      'userName': userData.data()!['userName'],
-    });};
+    if (userData.data()?['userName'] != null) {
+      FirebaseFirestore.instance.collection('chatCS').add({
+        'text': _userEnterMessage,
+        'time': Timestamp.now(),
+        'userID': user.uid,
+        'userName': userData.data()!['userName'],
+      });
+      _controller.clear();
+    } else if (userData2.data()?['userName'] != null) {
+      FirebaseFirestore.instance.collection('chatCS').add({
+        'text': _userEnterMessage,
+        'time': Timestamp.now(),
+        'userID': user.uid,
+        'userName': userData2.data()!['userName'],
+      });
+      _controller.clear();
+    }
+    ;
     _controller.clear();
   }
 
