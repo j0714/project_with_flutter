@@ -51,7 +51,6 @@ class NoticeModel extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
       decoration: BoxDecoration(
         color: Colors.white70, // 이게 배경색입니다.
-        // color: Colors.amber,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
       padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
@@ -79,7 +78,6 @@ class NoticeModel extends StatelessWidget {
                             children: <Widget>[
                               Text(
                                 userName,
-                                // '이름',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
