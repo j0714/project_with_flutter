@@ -1,7 +1,7 @@
 //import 'dart:html';
 import 'dart:ui';
 import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
-import 'package:ui_1/screen/privacy_detail.dart';
+import 'package:ui_1/screen/passwordReset.dart';
 import 'package:ui_1/screen/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

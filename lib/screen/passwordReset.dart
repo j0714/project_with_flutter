@@ -72,7 +72,11 @@ class _Privacy_detailState extends State<Privacy_detail> {
                   child: TextField(
                     onChanged: (text) {
                       setState(() {
-                        sendToUserEmail = text;
+                        if (sendToUserEmail.isEmpty) {
+                          return print('empty or null');
+                        } else {
+                          sendToUserEmail = text;
+                        }
                       });
                     },
                     decoration: InputDecoration(
@@ -96,13 +100,22 @@ class _Privacy_detailState extends State<Privacy_detail> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
-                      userAuth.sendPasswordResetEmail(email: sendToUserEmail);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) =>
-                                  LoginForm())); //new_password에서 login페이지로 바꿈.
-                      print(sendToUserEmail);
+                      try {
+                        if (sendToUserEmail != null) {
+                          userAuth.sendPasswordResetEmail(
+                              email: sendToUserEmail);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) =>
+                                      LoginForm())); //new_password에서 login페이지로 바꿈.
+                          print(sendToUserEmail);
+                        } else {
+                          sendToUserEmail = 'false';
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
                     },
                   ),
                   decoration: BoxDecoration(
