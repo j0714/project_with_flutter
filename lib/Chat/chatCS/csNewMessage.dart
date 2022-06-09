@@ -17,15 +17,26 @@ class _csNewMessageState extends State<csNewMessage> {
     FocusScope.of(context).unfocus();
     final user = FirebaseAuth.instance.currentUser;
     final userData = await FirebaseFirestore.instance
-        .collection('user')
+        .collection('admin')
         .doc(user!.uid)
         .get();
+    final userData2 = await FirebaseFirestore.instance
+        .collection('student')
+        .doc(user.uid)
+        .get();
+    if(userData != null){
     FirebaseFirestore.instance.collection('chatCS').add({
       'text': _userEnterMessage,
       'time': Timestamp.now(),
       'userID': user.uid,
       'userName': userData.data()!['userName'],
-    });
+    });} else if(userData2 != null){
+       FirebaseFirestore.instance.collection('chatCS').add({
+      'text': _userEnterMessage,
+      'time': Timestamp.now(),
+      'userID': user.uid,
+      'userName': userData.data()!['userName'],
+    });};
     _controller.clear();
   }
 
