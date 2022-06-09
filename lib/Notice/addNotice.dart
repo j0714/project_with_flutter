@@ -112,7 +112,7 @@ class _AddNoticeState extends State<AddNotice> {
   void _sendNotice() async {
     final user = FirebaseAuth.instance.currentUser;
     final userData = await FirebaseFirestore.instance
-        .collection('user')
+        .collection('admin')
         .doc(user!.uid)
         .get();
     FirebaseFirestore.instance.collection('notice').add(
