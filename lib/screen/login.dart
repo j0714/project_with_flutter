@@ -1,3 +1,4 @@
+//import 'dart:html';
 import 'dart:ui';
 import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
 import 'package:ui_1/screen/privacy_detail.dart';
@@ -135,7 +136,6 @@ class _LoginFormState extends State<LoginForm> {
                           final newUser =
                               await _authentication.signInWithEmailAndPassword(
                                   email: userEmail, password: userPassword);
-
                           final userAuth =
                               await FirebaseAuth.instance.currentUser!;
 
@@ -147,6 +147,7 @@ class _LoginFormState extends State<LoginForm> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => HomePage()));
+                              print('로그인 확인');
                             }
                           }
 

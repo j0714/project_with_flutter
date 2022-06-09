@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/login.dart';
 import 'package:ui_1/screen/privacy_detail.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Privacy extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class Privacy extends StatefulWidget {
 }
 
 class _PrivacyState extends State<Privacy> {
+  final userPasswordInfo = FirebaseAuth.instance.currentUser;
+  final newUserPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -57,6 +61,7 @@ class _PrivacyState extends State<Privacy> {
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
+                            onTap: () {},
                           ),
                         ),
                         SizedBox(
@@ -65,6 +70,7 @@ class _PrivacyState extends State<Privacy> {
                         Container(
                           height: 50.0,
                           child: TextField(
+                            controller: newUserPassword,
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.vpn_key_outlined),
@@ -101,6 +107,7 @@ class _PrivacyState extends State<Privacy> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
+                    //userPasswordInfo?.updatePassword(newUserPassword);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => LoginForm()));
                   },
