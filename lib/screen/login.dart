@@ -43,10 +43,7 @@ class _LoginFormState extends State<LoginForm> {
           scrollDirection: Axis.vertical,
           child: Container(
             color: Color(0xffDAE0E8),
-            child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     height: 200.0,
@@ -136,26 +133,15 @@ class _LoginFormState extends State<LoginForm> {
                               await _authentication.signInWithEmailAndPassword(
                                   email: userEmail, password: userPassword);
 
-                          final userAuth =
-                              await FirebaseAuth.instance.currentUser!;
-
-                          if (!userAuth.emailVerified) {
-                            print("이메일 인증을 하세요");
-                          } else {
-                            if (newUser != null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            }
+                          if (newUser != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    // builder: (context) => csChatScreen(),
+                                    builder: (context) => HomePage(),
+                                    ),
+                                    );
                           }
-
-                          // if (newUser != null) {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => HomePage()));
-                          // }
                         } catch (e) {
                           print(e);
                         }
@@ -206,14 +192,13 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   SizedBox(
-                    height: 155.0,
+                    height: 165.0,
                   ),
                 ],
               ),
             ),
           ),
         ),
-      ),
     );
   }
 }
