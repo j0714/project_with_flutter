@@ -52,100 +52,93 @@ class _NoticePageState extends State<NoticePage> {
         .doc(user!.uid)
         .get();
     bool value = (userData.data()?['userName'] != null);
-    // print(value);
-    // print(value.toString().runtimeType == true.toString().runtimeType);
-
     return value;
-    // if(userData.data()?['userName'] == null){
-    //   // return Visibility(visible: true, child: _addNoticeButton(),);
-    //   print(Future<bool>.value(true).runtimeType);
-    //   return Future<bool>.value(true);
-    // } else {
-    //   // return Visibility(visible: false, child: _addNoticeButton(),);
-    //   print(Future<bool>.value(false).runtimeType);
-    //   return false;
-    // }
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Scaffold(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: ColorSet.pageBackgroundColor,
+        appBar: AppBar(
+          elevation: 0, //AppBar 그림자 없애기
           backgroundColor: ColorSet.pageBackgroundColor,
-          appBar: AppBar(
-            elevation: 0, //AppBar 그림자 없애기
-            backgroundColor: ColorSet.pageBackgroundColor,
-            flexibleSpace: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Notice',
-                          style: TextStyle(
-                              fontSize: 32, fontWeight: FontWeight.bold),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AddNotice()));
-                          },
-                          child: Visibility(
-                            visible: _visible() == true ? true : false,
-                            child: _addNoticeButton(),
-                          ),
-                        ),
-                      ],
-                    ),
+          flexibleSpace: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 16, right: 16, top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Notice',
+                        style: TextStyle(
+                            fontSize: 32, fontWeight: FontWeight.bold),
+                      ),
+                      FutureBuilder(
+                          future: _visible(),
+                          builder: (context, snapshot) {
+                            if (snapshot.data == true) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) => AddNotice())));
+                                },
+                                child: _addNoticeButton(),
+                              );
+                            } else
+                              return Container(); //return 값 아무거나 주려고
+                          }),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          body: SafeArea(
-            child: Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search...',
-                        hintStyle: TextStyle(color: Colors.grey.shade600),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Color.fromARGB(255, 165, 111, 111),
-                          size: 20,
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade100,
-                        contentPadding: EdgeInsets.all(8),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.grey.shade100),
-                        ),
+        ),
+        body: SafeArea(
+          child: Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      hintStyle: TextStyle(color: Colors.grey.shade600),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Color.fromARGB(255, 165, 111, 111),
+                        size: 20,
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.shade100,
+                      contentPadding: EdgeInsets.all(8),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.grey.shade100),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Expanded(
-                    child: NewNotices(),
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: NewNotices(),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
