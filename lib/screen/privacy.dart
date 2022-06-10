@@ -12,6 +12,28 @@ class _PrivacyState extends State<Privacy> {
   final userPasswordInfo = FirebaseAuth.instance.currentUser;
   final newUserPassword = TextEditingController();
 
+  var _currentPass = '';
+  var _newPass = '';
+  var _reNewPass = '';
+
+    void _snackBarMessage() {
+    //스낵바 활용
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Expanded(
+          child: Text('Check'),
+        ),
+        duration: Duration(
+          seconds: 2,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        behavior: SnackBarBehavior.floating, //바닥과 공간 두는 기능
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -54,14 +76,18 @@ class _PrivacyState extends State<Privacy> {
                         Container(
                           height: 50.0,
                           child: TextField(
-                            obscureText: true,
+                            // obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock),
                               hintText: '현재 비밀번호',
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
-                            onTap: () {},
+                            onChanged: (value) {
+                              setState(() {
+                                _currentPass = value;
+                              });
+                            },
                           ),
                         ),
                         SizedBox(
@@ -71,13 +97,18 @@ class _PrivacyState extends State<Privacy> {
                           height: 50.0,
                           child: TextField(
                             controller: newUserPassword,
-                            obscureText: true,
+                            // obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.vpn_key_outlined),
                               hintText: '새 비밀번호 입력',
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
+                            onChanged: (value){
+                              setState(() {
+                                _newPass == value;
+                              });
+                            },
                           ),
                         ),
                         SizedBox(
@@ -93,6 +124,11 @@ class _PrivacyState extends State<Privacy> {
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
+                            onChanged: (value){
+                              setState(() {
+                                _reNewPass = value;
+                              });
+                            },
                           ),
                         ),
                       ],
@@ -110,6 +146,10 @@ class _PrivacyState extends State<Privacy> {
                     //userPasswordInfo?.updatePassword(newUserPassword);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => LoginForm()));
+                    // _currentPass.trim().isEmpty || _newPass.trim().isEmpty 
+                    // ? Navigator.push(context,
+                    //     MaterialPageRoute(builder: (_) => LoginForm()))
+                    // : _snackBarMessage();
                   },
                 ),
                 decoration: BoxDecoration(

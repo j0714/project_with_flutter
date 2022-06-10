@@ -146,10 +146,9 @@ class _AddNoticeState extends State<AddNotice> {
                 children: <Widget>[
                   IconButton(
                     onPressed: () {
-                      if (_addTitle.trim().isEmpty && _addText.trim().isEmpty) {
-                        return Navigator.pop(context);
-                      } else
-                        return _showAlert(context);
+                      _addTitle.trim().isEmpty && _addText.trim().isEmpty
+                          ? Navigator.pop(context)
+                          : _showAlert(context);
                     },
                     icon: Icon(
                       Icons.arrow_back,
