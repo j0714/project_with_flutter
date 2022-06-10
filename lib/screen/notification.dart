@@ -16,6 +16,8 @@ class _notificationState extends State<notification> {
 
   @override
   Widget build(BuildContext context) {
+    var m = MediaQuery.of(context);
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -31,12 +33,12 @@ class _notificationState extends State<notification> {
             ), //AppBar 색상 변경
           ),
           centerTitle: true,
-          toolbarHeight: 60.0,
+          toolbarHeight: m.size.height * 0.08136,
           backgroundColor: Color(0xff5D8AB7),
         ),
         body: Container(
           color: Color(0xffDAE0E8),
-          padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          padding: EdgeInsets.fromLTRB(m.size.height * 0.02712, 10.0, 20.0, 10.0),
           child: Center(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +49,7 @@ class _notificationState extends State<notification> {
                   children: [
                     Container(
                       width: 400.0,
-                      margin: EdgeInsets.only(top: 30.0, bottom: 10.0),
+                      margin: EdgeInsets.only(top: m.size.height * 0.04068, bottom: 10.0),
                       child: Text('전체 알림'),
                     ),
                     Row(
@@ -178,9 +180,6 @@ class _notificationState extends State<notification> {
                       ],
                     ),
                     const Divider(color: Colors.white, thickness: 1.0),
-                    SizedBox(
-                      height: 30.0,
-                    ),
                   ],
                 ))
               ],

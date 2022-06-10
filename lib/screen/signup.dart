@@ -92,6 +92,8 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    var m=MediaQuery.of(context);
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -102,7 +104,7 @@ class _SignupState extends State<Signup> {
           appBar: AppBar(
             title: Text('회원가입'),
             centerTitle: true,
-            toolbarHeight: 60.0,
+            toolbarHeight: m.size.height * 0.08136,
             backgroundColor: Color(0xff5D8AB7),
           ),
           body: Column(
@@ -150,10 +152,10 @@ class _SignupState extends State<Signup> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 40.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.05424),
                                     child: TextFormField(
                                       key: ValueKey(1),
                                       validator: (value) {
@@ -176,10 +178,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(2),
                                       validator: (value) {
@@ -204,10 +206,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(3),
                                       validator: (value) {
@@ -232,10 +234,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(4),
                                       onSaved: (value) {
@@ -252,10 +254,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(5),
                                       onSaved: (value) {
@@ -272,10 +274,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(6),
                                       onSaved: (value) {
@@ -292,10 +294,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(7),
                                       onSaved: (value) {
@@ -312,10 +314,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(8),
                                       onSaved: (value) {
@@ -333,7 +335,7 @@ class _SignupState extends State<Signup> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: 50.0,
+                                        top: m.size.height * 0.0678,
                                         left: 30.0,
                                         right: 30.0,
                                         bottom: 0.0),
@@ -433,10 +435,10 @@ class _SignupState extends State<Signup> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 40.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.05424),
                                     child: TextFormField(
                                       key: ValueKey(11),
                                       onSaved: (value) {
@@ -453,10 +455,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(12),
                                       onSaved: (value) {
@@ -474,10 +476,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(13),
                                       validator: (value) {
@@ -502,10 +504,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top:m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(14),
                                       onSaved: (value) {
@@ -522,10 +524,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: 45.0,
+                                    height: m.size.height * 0.06102,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: 10.0),
+                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                                     child: TextFormField(
                                       key: ValueKey(15),
                                       onSaved: (value) {
@@ -543,7 +545,7 @@ class _SignupState extends State<Signup> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: 60.0,
+                                        top: m.size.height * 0.08136,
                                         left: 30.0,
                                         right: 30.0,
                                         bottom: 0.0),

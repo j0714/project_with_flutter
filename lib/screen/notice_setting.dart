@@ -10,12 +10,6 @@ class Notice_Setting extends StatefulWidget {
   State<Notice_Setting> createState() => _Notice_SettingState();
 }
 
-class noticeColor{
-  late String color1 ;
-  late String color2 ;
-
-}
-
 class _Notice_SettingState extends State<Notice_Setting> {
 
   Color color1 = Colors.grey;
@@ -23,11 +17,12 @@ class _Notice_SettingState extends State<Notice_Setting> {
 
   @override
   Widget build(BuildContext context) {
+    var m=MediaQuery.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Notice Setting', style: TextStyle(color: Colors.black),),
+      appBar: AppBar(title: const Text('Notice Setting', style: TextStyle(color: Colors.white),),
         centerTitle: true,
-        toolbarHeight: 60.0,
+        toolbarHeight: m.size.height * 0.08136,
         backgroundColor: Color(0xff5D8AB7),
       ),
       body: Container(
@@ -36,7 +31,7 @@ class _Notice_SettingState extends State<Notice_Setting> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 100.0,),
+              SizedBox(height: m.size.height * 0.1356,),
               Row( mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
@@ -45,7 +40,7 @@ class _Notice_SettingState extends State<Notice_Setting> {
                     ),
                     Container(
                       margin: EdgeInsets.only(right: 10.0),
-                      height: 40.0, width: 40.0,
+                      height: m.size.height * 0.05424, width: 40.0,
                       color: this.color1,
                     ),
                     ElevatedButton(
@@ -54,12 +49,12 @@ class _Notice_SettingState extends State<Notice_Setting> {
                         onPressed: () => pickColor_1(context),
                         child: Text(
                           'Pick Color',
-                          style: TextStyle(fontSize: 24),
+                          style: TextStyle(fontSize: 20),
                         )
                     )
                   ]
               ),
-              SizedBox(height: 50.0,),
+              SizedBox(height: m.size.height * 0.0678,),
               Row( mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
@@ -68,23 +63,23 @@ class _Notice_SettingState extends State<Notice_Setting> {
                   ),
                   Container(
                     margin: EdgeInsets.only(right: 10.0),
-                    height: 40.0, width: 40.0,
+                    height: m.size.height * 0.05424, width: 40.0,
                     color: this.color2,
                   ),
 
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 24)),
+                      padding: EdgeInsets.symmetric(horizontal: 24)),
                       onPressed: () => pickColor_2(context),
                       child: Text(
                         'Pick Color',
-                        style: TextStyle(fontSize: 24),
-                      )
+                        style: TextStyle(fontSize: 20),
+                      ),
                   )
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: 50.0, left:10.0, right: 10.0),
+                margin: EdgeInsets.only(top: m.size.height * 0.0678, left:10.0, right: 10.0),
                 width: double.infinity,
                 child: TextButton(
                   child: Text(
