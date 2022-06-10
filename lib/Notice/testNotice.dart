@@ -27,14 +27,16 @@ class NoticeModel extends StatelessWidget {
       bool value = (userData.data()?['userName'] != null);
       return value;
     }
+
     void _deleteNotice() {
       final doc = FirebaseFirestore.instance.collection('notice').snapshots();
       // final docs = doc.data().;
-      final documnets = doc.data().docs
+      final documnets = doc.data().docs;
       FirebaseFirestore.instance.collection('notice').doc().delete();
-      DocumentReference doc_ref=FirebaseFirestore.instance.collection("notice").doc();
+      DocumentReference doc_ref =
+          FirebaseFirestore.instance.collection("notice").doc();
     }
-    
+
     void _showBottomSheet() {
       showModalBottomSheet(
         context: context,
