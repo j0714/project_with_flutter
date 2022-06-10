@@ -72,11 +72,7 @@ class _Privacy_detailState extends State<Privacy_detail> {
                   child: TextField(
                     onChanged: (text) {
                       setState(() {
-                        if (sendToUserEmail.isEmpty) {
-                          return print('empty or null');
-                        } else {
-                          sendToUserEmail = text;
-                        }
+                        sendToUserEmail = text;
                       });
                     },
                     decoration: InputDecoration(
