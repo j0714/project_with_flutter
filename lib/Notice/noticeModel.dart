@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class NoticeModel extends StatelessWidget {
@@ -13,6 +15,24 @@ class NoticeModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<bool> _visible() async {
+      FocusScope.of(context).unfocus();
+      final user = FirebaseAuth.instance.currentUser;
+      final userData = await FirebaseFirestore.instance
+          .collection('admin')
+          .doc(user!.uid)
+          .get();
+      bool value = (userData.data()?['userName'] != null);
+      return value;
+    }
+    // void _deleteNotice() {
+    //   final doc = FirebaseFirestore.instance.collection('notice').snapshots();
+    //   // final docs = doc.data().;
+    //   final documnets = doc.data().docs;
+    //   FirebaseFirestore.instance.collection('notice').doc().delete();
+    //   DocumentReference doc_ref=FirebaseFirestore.instance.collection("notice").doc();
+    // }
+    
     void _showBottomSheet() {
       showModalBottomSheet(
         context: context,
@@ -24,7 +44,10 @@ class NoticeModel extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.delete_outline),
                 title: Text('Delete'),
-                onTap: () {},
+                onTap: () {
+                  // Navigator.pop(context);
+                  // _deleteNotice();
+                },
               ),
               ListTile(
                 leading: Icon(Icons.edit_outlined),
@@ -99,9 +122,17 @@ class NoticeModel extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: _showBottomSheet,
-                  icon: Icon(Icons.more_horiz),
+                FutureBuilder(
+                  future: _visible(),
+                  builder: (context, snapshot) {
+                    if (snapshot.data == true) {
+                      return IconButton(
+                        onPressed: _showBottomSheet,
+                        icon: Icon(Icons.more_horiz),
+                      );
+                    } else
+                      return Container();
+                  },
                 )
               ],
             ),

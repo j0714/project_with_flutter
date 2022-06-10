@@ -39,7 +39,7 @@ class _ConversationListState extends State<ConversationList> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(widget.imageURL),
+                    backgroundColor: Colors.amber,
                     maxRadius: 30,
                   ),
                   SizedBox(
