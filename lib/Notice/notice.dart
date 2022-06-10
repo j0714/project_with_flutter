@@ -24,7 +24,6 @@ class NewNotices extends StatelessWidget {
         final noticeDocs = snapshot.data!.docs;
 
         return ListView.builder(
-          // reverse: true,
           itemCount: noticeDocs.length,
           itemBuilder: (context, index) {
             return NoticeModel(
