@@ -16,7 +16,7 @@ class _PrivacyState extends State<Privacy> {
   var _newPass = '';
   var _reNewPass = '';
 
-    void _snackBarMessage() {
+  void _snackBarMessage() {
     //스낵바 활용
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -104,9 +104,9 @@ class _PrivacyState extends State<Privacy> {
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
-                            onChanged: (value){
+                            onChanged: (value) {
                               setState(() {
-                                _newPass == value;
+                                _newPass = value;
                               });
                             },
                           ),
@@ -124,7 +124,7 @@ class _PrivacyState extends State<Privacy> {
                               fillColor: Colors.grey[50],
                               filled: true,
                             ),
-                            onChanged: (value){
+                            onChanged: (value) {
                               setState(() {
                                 _reNewPass = value;
                               });
@@ -143,10 +143,15 @@ class _PrivacyState extends State<Privacy> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
+                    if (_newPass == _reNewPass) {
+                      userPasswordInfo?.updatePassword(_reNewPass);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => LoginForm()));
+                    }
                     //userPasswordInfo?.updatePassword(newUserPassword);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => LoginForm()));
-                    // _currentPass.trim().isEmpty || _newPass.trim().isEmpty 
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (_) => LoginForm()));
+                    // _currentPass.trim().isEmpty || _newPass.trim().isEmpty
                     // ? Navigator.push(context,
                     //     MaterialPageRoute(builder: (_) => LoginForm()))
                     // : _snackBarMessage();
