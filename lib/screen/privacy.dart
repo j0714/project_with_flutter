@@ -147,7 +147,8 @@ class _PrivacyState extends State<Privacy> {
                       userPasswordInfo?.updatePassword(_reNewPass);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => LoginForm()));
-                    }
+                    } else
+                    return null;
                     //userPasswordInfo?.updatePassword(newUserPassword);
                     // Navigator.push(context,
                     //     MaterialPageRoute(builder: (_) => LoginForm()));

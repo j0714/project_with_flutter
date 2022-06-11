@@ -33,60 +33,10 @@ class _ChatPageState extends State<ChatPage> {
 
   List<ChatUsers> chatUsers = [
     ChatUsers(
-        name: "김윤아",
-        messageText: '길',
+        name: "2022-1 컴퓨터과학과 4학년 단톡방",
+        messageText: '',
         imageURL: 'images/home.png',
         time: '오후 5:00'),
-    ChatUsers(
-        name: "더 크로스",
-        messageText: '떠나가요 떠나가지마요',
-        imageURL: 'images/home.png',
-        time: '오후 4:45'),
-    ChatUsers(
-        name: "노리조",
-        messageText: '형',
-        imageURL: 'images/home.png',
-        time: '오전 11:40'),
-    ChatUsers(
-        name: "YB",
-        messageText: '앚을께',
-        imageURL: 'images/home.png',
-        time: '오전 10:20'),
-    ChatUsers(
-        name: "장범준",
-        messageText: '잠이 오질 않네요',
-        imageURL: 'images/home.png',
-        time: '오전 9:13'),
-    ChatUsers(
-        name: "버즈",
-        messageText: '은인',
-        imageURL: 'images/home.png',
-        time: '오전 8:22'),
-    ChatUsers(
-        name: "체리필터",
-        messageText: '오리 날다',
-        imageURL: 'images/home.png',
-        time: '어제'),
-    ChatUsers(
-        name: "블랙핑크",
-        messageText: '뚜두뚜두',
-        imageURL: 'images/home.png',
-        time: '어제'),
-    ChatUsers(
-        name: "손디아",
-        messageText: '어른',
-        imageURL: 'images/home.png',
-        time: '어제'),
-    ChatUsers(
-        name: "김기태",
-        messageText: '반쪽짜리',
-        imageURL: 'images/home.png',
-        time: '어제'),
-    ChatUsers(
-        name: "BTS",
-        messageText: 'DNA',
-        imageURL: 'images/home.png',
-        time: '어제'),
   ]; // 채팅방
   @override
   Widget build(BuildContext context) {
