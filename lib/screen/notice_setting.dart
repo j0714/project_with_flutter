@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:ui_1/screen/homePage.dart';
+import 'package:ui_1/color/shareColor.dart';
+import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class Notice_Setting extends StatefulWidget {
@@ -12,17 +14,18 @@ class Notice_Setting extends StatefulWidget {
 
 class _Notice_SettingState extends State<Notice_Setting> {
 
-  Color color1 = Colors.grey;
-  Color color2 = Colors.deepPurpleAccent;
+  final Controller controller = Get.put(Controller());
+
+  Color color1 = Colors.blue;
+  Color color2 = Colors.red;
 
   @override
   Widget build(BuildContext context) {
-    var m=MediaQuery.of(context);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Notice Setting', style: TextStyle(color: Colors.white),),
         centerTitle: true,
-        toolbarHeight: m.size.height * 0.08136,
+        toolbarHeight: 60.h,
         backgroundColor: Color(0xff5D8AB7),
       ),
       body: Container(
@@ -31,22 +34,23 @@ class _Notice_SettingState extends State<Notice_Setting> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: m.size.height * 0.1356,),
+              SizedBox(height: 10.h,),
               Row( mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       margin: EdgeInsets.only(left:10.0, right: 10.0),
                       child: Text("제 1전공", style: TextStyle(fontSize: 30.0)),
                     ),
-                    Container(
+                    GetX<Controller>(builder:(_)=>Container(
+                      // backgroundImage: NetworkImage(widget.imageURL),
+                      color: controller.noticecolor().color1,
                       margin: EdgeInsets.only(right: 10.0),
-                      height: m.size.height * 0.05424, width: 40.0,
-                      color: this.color1,
-                    ),
+                      height: 40.h, width: 40.0,
+                    ),),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(horizontal: 24)),
-                        onPressed: () => pickColor_1(context),
+                        onPressed: () => pickColor_1(context, ),
                         child: Text(
                           'Pick Color',
                           style: TextStyle(fontSize: 20),
@@ -54,19 +58,24 @@ class _Notice_SettingState extends State<Notice_Setting> {
                     )
                   ]
               ),
-              SizedBox(height: m.size.height * 0.0678,),
+              SizedBox(height:50.h,),
               Row( mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     margin: EdgeInsets.only(left:10.0, right: 10.0),
                     child: Text("제 2전공", style: TextStyle(fontSize: 30.0)),
                   ),
-                  Container(
+                  GetX<Controller>(builder:(_)=>Container(
+                    // backgroundImage: NetworkImage(widget.imageURL),
+                    color: controller.noticecolor().color2,
                     margin: EdgeInsets.only(right: 10.0),
-                    height: m.size.height * 0.05424, width: 40.0,
-                    color: this.color2,
-                  ),
-
+                    height: 40.h, width: 40.0,
+                  ),),
+                  // Container(
+                  //   margin: EdgeInsets.only(right: 10.0),
+                  //   height: m.size.height * 0.05424, width: 40.0,
+                  //   color: this.color2,
+                  // ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 24)),
@@ -79,16 +88,15 @@ class _Notice_SettingState extends State<Notice_Setting> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: m.size.height * 0.0678, left:10.0, right: 10.0),
+                margin: EdgeInsets.only(top:50.h, left:10.0, right: 10.0),
                 width: double.infinity,
                 child: TextButton(
                   child: Text(
-                    '설정 변경',
+                    '설정 초기화',
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_)=> HomePage()));
+                    controller.updatecolor(Colors.blue, Colors.red);
                   },
                 ),
                 decoration: BoxDecoration(
@@ -170,7 +178,11 @@ class _Notice_SettingState extends State<Notice_Setting> {
               'SELECT',
               style: TextStyle(fontSize: 20),
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: (){
+              controller.updatecolor(this.color1, this.color2);
+              Navigator.of(context).pop();
+            }
+            // => Navigator.of(context).pop(),
           ),
         ],
       ),
@@ -190,7 +202,10 @@ class _Notice_SettingState extends State<Notice_Setting> {
               'SELECT',
               style: TextStyle(fontSize: 20),
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () {
+              controller.updatecolor(this.color1, this.color2);
+              Navigator.of(context).pop();
+            }
           ),
         ],
       ),
