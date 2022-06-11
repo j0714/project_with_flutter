@@ -1,5 +1,6 @@
 import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_1/color/shareColor.dart';
 
 class ConversationList extends StatefulWidget {
   String name;
@@ -39,7 +40,7 @@ class _ConversationListState extends State<ConversationList> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: ColorSet.appBarColor,
                     maxRadius: 30,
                   ),
                   SizedBox(

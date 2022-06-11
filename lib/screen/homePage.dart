@@ -40,10 +40,8 @@ class _HomePageState extends State<HomePage> {
                 height: 70,
                 padding: EdgeInsets.only(bottom: 10, top: 5),
                 child: TabBar(
-                  // indicatorSize: TabBarIndicatorSize.label,
                   indicatorColor:
                       ColorSet.appBarColor, // 라벨 없애는 방법을 몰라서 배경색이랑 같은 걸로 설정
-                  // indicatorWeight: 2,
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.black38,
                   labelStyle: TextStyle(
@@ -55,7 +53,6 @@ class _HomePageState extends State<HomePage> {
                       text: "Chat",
                     ),
                     Tab(
-                      // icon: Icon(Icons.notifications),
                       icon: Icon(Icons.event),
                       text: "Notice",
                     ),

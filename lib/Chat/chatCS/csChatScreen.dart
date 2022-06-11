@@ -35,30 +35,7 @@ class _csChatScreenState extends State<csChatScreen> {
     }
   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('CS'),
-//         actions: [
-//           IconButton(
-//               onPressed: () {
-//                 Navigator.pop(context);
-//               },
-//               icon: Icon(
-//                 Icons.exit_to_app_sharp,
-//                 color: Colors.white,
-//               ))
-//         ],
-//       ),
-//       body: Container(
-//         child: Column(
-//           children: [Expanded(child: csMessage()), csNewMessage()],
-//         ),
-//       ),
-//     );
-//   }
-// }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
