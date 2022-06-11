@@ -1,6 +1,5 @@
-//import 'dart:html';
 import 'dart:ui';
-import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_1/screen/passwordReset.dart';
 import 'package:ui_1/screen/signup.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +21,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    var m = MediaQuery.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -38,7 +36,7 @@ class _LoginFormState extends State<LoginForm> {
             ), //AppBar 색상 변경
           ),
           centerTitle: true,
-          toolbarHeight: m.size.height * 0.08136,
+          toolbarHeight: 60.h,
           backgroundColor: Color(0xff5D8AB7),
         ),
         body: SingleChildScrollView(
@@ -51,11 +49,11 @@ class _LoginFormState extends State<LoginForm> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: m.size.height * 0.2712,
+                    height: 200.h,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
-                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                    margin: EdgeInsets.only( top: 10.h ),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       key: ValueKey(0),
@@ -89,7 +87,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
-                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                    margin: EdgeInsets.only(top: 10.h),
                     child: TextFormField(
                       key: ValueKey(00),
                       validator: (value) {
@@ -125,10 +123,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: m.size.height * 0.08136,
-                        left: 30.0,
-                        right: 30.0,
-                        bottom: 5.0),
+                        top: 60.h, left: 30.0, right: 30.0, bottom: 5.0),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -172,11 +167,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                      top: m.size.height * 0.00678,
-                      left: 30.0,
-                      right: 30.0,
-                    ),
+                    margin: EdgeInsets.only( top: 5.h, left: 30.0, right: 30.0),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -194,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                    margin: EdgeInsets.only(top: 10.h),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -211,7 +202,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   SizedBox(
-                    height: m.size.height * 0.12204,
+                    height: 100.h
                   ),
                 ],
               ),
