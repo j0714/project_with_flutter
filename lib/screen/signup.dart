@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -92,8 +93,6 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    var m=MediaQuery.of(context);
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -104,7 +103,7 @@ class _SignupState extends State<Signup> {
           appBar: AppBar(
             title: Text('회원가입'),
             centerTitle: true,
-            toolbarHeight: m.size.height * 0.08136,
+            toolbarHeight: 60.h,
             backgroundColor: Color(0xff5D8AB7),
           ),
           body: Column(
@@ -152,10 +151,10 @@ class _SignupState extends State<Signup> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.05424),
+                                    margin: EdgeInsets.only(top: 40.h),
                                     child: TextFormField(
                                       key: ValueKey(1),
                                       validator: (value) {
@@ -171,17 +170,17 @@ class _SignupState extends State<Signup> {
                                         userName = value;
                                       },
                                       decoration: InputDecoration(
-                                        hintText: '이름',
+                                        hintText: '* 이름',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height:  45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(2),
                                       validator: (value) {
@@ -199,17 +198,17 @@ class _SignupState extends State<Signup> {
                                       },
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                        hintText: '이메일',
+                                        hintText: '* 학교 이메일',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top:10.h),
                                     child: TextFormField(
                                       key: ValueKey(3),
                                       validator: (value) {
@@ -227,37 +226,64 @@ class _SignupState extends State<Signup> {
                                       },
                                       obscureText: true, //치고나면 안보이게 설정
                                       decoration: InputDecoration(
-                                        hintText: '비번',
+                                        hintText: '* 비밀번호',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
-                                    child: TextFormField(
-                                      key: ValueKey(4),
-                                      onSaved: (value) {
-                                        userDepartment = value!;
-                                      },
+                                    height: 45.h,
+                                    width: double.infinity,
+                                    margin: EdgeInsets.only(top: 10.h, left: 20.0, right: 20.0),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                                    child: DropdownButton(
+                                      hint: Text('   * 학과를 선택하세요'),
+                                      dropdownColor: Colors.white,
+                                      items: [
+                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
+                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
+                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
+                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
+                                        DropdownMenuItem(child:Text('의료학과'), value:'의료학과'),
+                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
+                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
+                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
+                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
+                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
+                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
+                                      ],
                                       onChanged: (value) {
-                                        userDepartment = value;
                                       },
-                                      decoration: InputDecoration(
-                                        hintText: '학과',
-                                        fillColor: Colors.grey[50],
-                                        filled: true,
-                                      ),
                                     ),
                                   ),
+                                  // Container(
+                                  //   height: m.size.height * 0.06102,
+                                  //   padding: EdgeInsets.symmetric(
+                                  //       horizontal: 20.0), //가로여백설정
+                                  //   margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                  //   child: TextFormField(
+                                  //     key: ValueKey(4),
+                                  //     onSaved: (value) {
+                                  //       userDepartment = value!;
+                                  //     },
+                                  //     onChanged: (value) {
+                                  //       userDepartment = value;
+                                  //     },
+                                  //     decoration: InputDecoration(
+                                  //       hintText: '학과',
+                                  //       fillColor: Colors.grey[50],
+                                  //       filled: true,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(5),
                                       onSaved: (value) {
@@ -267,17 +293,17 @@ class _SignupState extends State<Signup> {
                                         userId = value;
                                       },
                                       decoration: InputDecoration(
-                                        hintText: '학번',
+                                        hintText: '* 학번',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(6),
                                       onSaved: (value) {
@@ -287,17 +313,17 @@ class _SignupState extends State<Signup> {
                                         userSemester = value;
                                       },
                                       decoration: InputDecoration(
-                                        hintText: '이수학기',
+                                        hintText: ' * 이수학기',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height:45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(7),
                                       onSaved: (value) {
@@ -314,10 +340,10 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top:10.h),
                                     child: TextFormField(
                                       key: ValueKey(8),
                                       onSaved: (value) {
@@ -335,10 +361,8 @@ class _SignupState extends State<Signup> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: m.size.height * 0.0678,
-                                        left: 30.0,
-                                        right: 30.0,
-                                        bottom: 0.0),
+                                        top: 50.h, left: 30.0, right: 30.0, bottom: 0.0
+                                    ),
                                     width: double.infinity,
                                     child: TextButton(
                                       child: Text(
@@ -435,10 +459,10 @@ class _SignupState extends State<Signup> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height:45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.05424),
+                                    margin: EdgeInsets.only(top: 40.h),
                                     child: TextFormField(
                                       key: ValueKey(11),
                                       onSaved: (value) {
@@ -448,17 +472,17 @@ class _SignupState extends State<Signup> {
                                         userName = value;
                                       },
                                       decoration: InputDecoration(
-                                        hintText: '이름',
+                                        hintText: '* 이름',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(12),
                                       onSaved: (value) {
@@ -469,17 +493,17 @@ class _SignupState extends State<Signup> {
                                       },
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                        hintText: '이메일',
+                                        hintText: '* 이메일',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(13),
                                       validator: (value) {
@@ -497,37 +521,64 @@ class _SignupState extends State<Signup> {
                                       },
                                       obscureText: true, //치고나면 안보이게 설정
                                       decoration: InputDecoration(
-                                        hintText: '비번',
+                                        hintText: '* 비번',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: m.size.height * 0.06102,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top:m.size.height * 0.01356),
-                                    child: TextFormField(
-                                      key: ValueKey(14),
-                                      onSaved: (value) {
-                                        userDepartment = value!;
-                                      },
+                                    height: 45.h,
+                                    width: double.infinity,
+                                    margin: EdgeInsets.only(top: 10.h, left: 20.0, right: 20.0),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                                    child: DropdownButton(
+                                      hint: Text('   * 학과를 선택하세요'),
+                                      dropdownColor: Colors.white,
+                                      items: [
+                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
+                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
+                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
+                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
+                                        DropdownMenuItem(child:Text('의료학과'), value:'의료학과'),
+                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
+                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
+                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
+                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
+                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
+                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
+                                      ],
                                       onChanged: (value) {
-                                        userDepartment = value;
                                       },
-                                      decoration: InputDecoration(
-                                        hintText: '학과',
-                                        fillColor: Colors.grey[50],
-                                        filled: true,
-                                      ),
                                     ),
                                   ),
+                                  // Container(
+                                  //   height: m.size.height * 0.06102,
+                                  //   padding: EdgeInsets.symmetric(
+                                  //       horizontal: 20.0), //가로여백설정
+                                  //   margin: EdgeInsets.only(top:m.size.height * 0.01356),
+                                  //   child: TextFormField(
+                                  //     key: ValueKey(14),
+                                  //     onSaved: (value) {
+                                  //       userDepartment = value!;
+                                  //     },
+                                  //     onChanged: (value) {
+                                  //       userDepartment = value;
+                                  //     },
+                                  //     decoration: InputDecoration(
+                                  //       hintText: '학과',
+                                  //       fillColor: Colors.grey[50],
+                                  //       filled: true,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Container(
-                                    height: m.size.height * 0.06102,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(15),
                                       onSaved: (value) {
@@ -537,7 +588,7 @@ class _SignupState extends State<Signup> {
                                         userIdentity = value;
                                       },
                                       decoration: InputDecoration(
-                                        hintText: '신원',
+                                        hintText: '* 신원',
                                         fillColor: Colors.grey[50],
                                         filled: true,
                                       ),
@@ -545,7 +596,7 @@ class _SignupState extends State<Signup> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: m.size.height * 0.08136,
+                                        top: 60.h,
                                         left: 30.0,
                                         right: 30.0,
                                         bottom: 0.0),
