@@ -22,7 +22,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    var m=MediaQuery.of(context);
+    var m = MediaQuery.of(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -38,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
             ), //AppBar 색상 변경
           ),
           centerTitle: true,
-          toolbarHeight: m.size.height*0.08136,
+          toolbarHeight: m.size.height * 0.08136,
           backgroundColor: Color(0xff5D8AB7),
         ),
         body: SingleChildScrollView(
@@ -55,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
-                    margin: EdgeInsets.only(top:m.size.height * 0.01356),
+                    margin: EdgeInsets.only(top: m.size.height * 0.01356),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       key: ValueKey(0),
@@ -125,7 +125,10 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        top: m.size.height * 0.08136, left: 30.0, right: 30.0, bottom: 5.0),
+                        top: m.size.height * 0.08136,
+                        left: 30.0,
+                        right: 30.0,
+                        bottom: 5.0),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(

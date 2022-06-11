@@ -13,6 +13,7 @@ class csChatScreen extends StatefulWidget {
 
 class _csChatScreenState extends State<csChatScreen> {
   final _authentication = FirebaseAuth.instance;
+  final usertest = FirebaseFirestore.instance;
   User? LoggedUser;
 
   @override
@@ -144,4 +145,3 @@ class _csChatScreenState extends State<csChatScreen> {
     );
   }
 }
-
