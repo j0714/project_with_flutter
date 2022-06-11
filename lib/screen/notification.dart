@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class notification extends StatefulWidget {
   @override
@@ -16,8 +17,6 @@ class _notificationState extends State<notification> {
 
   @override
   Widget build(BuildContext context) {
-    var m = MediaQuery.of(context);
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -33,12 +32,12 @@ class _notificationState extends State<notification> {
             ), //AppBar 색상 변경
           ),
           centerTitle: true,
-          toolbarHeight: m.size.height * 0.08136,
+          toolbarHeight: 60.h,
           backgroundColor: Color(0xff5D8AB7),
         ),
         body: Container(
           color: Color(0xffDAE0E8),
-          padding: EdgeInsets.fromLTRB(m.size.height * 0.02712, 10.0, 20.0, 10.0),
+          padding: EdgeInsets.fromLTRB(20.h, 10.0, 20.0, 10.0),
           child: Center(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -46,140 +45,140 @@ class _notificationState extends State<notification> {
               children: [
                 Container(
                     child: Column(
-                  children: [
-                    Container(
-                      width: 400.0,
-                      margin: EdgeInsets.only(top: m.size.height * 0.04068, bottom: 10.0),
-                      child: Text('전체 알림'),
-                    ),
-                    Row(
                       children: [
                         Container(
-                          width: 290.0,
-                          child: Text(
-                            '메시지 알림',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
+                          width: 400.0,
+                          margin: EdgeInsets.only(top: 30.h, bottom: 10.0),
+                          child: Text('전체 알림'),
                         ),
-                        Switch(
-                            value: switchW1,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchW1 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
-                    Row(
-                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child: Text(
+                                '메시지 알림',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                            Switch(
+                                value: switchW1,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchW1 = value;
+                                  });
+                                })
+                          ],
+                        ),
+                        const Divider(color: Colors.white, thickness: 1.0),
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child: Text(
+                                '소리',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                            Switch(
+                                value: switchW2,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchW2 = value;
+                                  });
+                                })
+                          ],
+                        ),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Container(
-                          width: 290.0,
-                          child: Text(
-                            '소리',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
+                          width: 400.0,
+                          margin: EdgeInsets.only(top: 50.h, bottom: 10.0),
+                          child: Text('새 메시지 알림'),
                         ),
-                        Switch(
-                            value: switchW2,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchW2 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
-                    Container(
-                      width: 400.0,
-                      margin: EdgeInsets.only(top: 50.0, bottom: 10.0),
-                      child: Text('새 메시지 알림'),
-                    ),
-                    Row(
-                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child: Text(
+                                '메시지 알림',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                            Switch(
+                                value: switchM1,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchM1 = value;
+                                  });
+                                })
+                          ],
+                        ),
+                        const Divider(color: Colors.white, thickness: 1.0),
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child: Text(
+                                '소리',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                            Switch(
+                                value: switchM2,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchM2 = value;
+                                  });
+                                })
+                          ],
+                        ),
+                        const Divider(color: Colors.white, thickness: 1.0),
                         Container(
-                          width: 290.0,
-                          child: Text(
-                            '메시지 알림',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
+                          width: 400.0,
+                          margin: EdgeInsets.only(top: 50.h, bottom: 10.0),
+                          child: Text('공지 알림'),
                         ),
-                        Switch(
-                            value: switchM1,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchM1 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
-                    Row(
-                      children: [
-                        Container(
-                          width: 290.0,
-                          child: Text(
-                            '소리',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child:
+                                  Text('메시지 알림', style: TextStyle(fontSize: 18.0)),
+                            ),
+                            Switch(
+                                value: switchN1,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchN1 = value;
+                                  });
+                                })
+                          ],
                         ),
-                        Switch(
-                            value: switchM2,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchM2 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
-                    Container(
-                      width: 400.0,
-                      margin: EdgeInsets.only(top: 50.0, bottom: 10.0),
-                      child: Text('공지 알림'),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 290.0,
-                          child:
-                              Text('메시지 알림', style: TextStyle(fontSize: 18.0)),
+                        const Divider(color: Colors.white, thickness: 1.0),
+                        Row(
+                          children: [
+                            Container(
+                              width: 290.0,
+                              child: Text(
+                                '소리',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                            Switch(
+                                value: switchN2,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    switchN2 = value;
+                                  });
+                                })
+                          ],
                         ),
-                        Switch(
-                            value: switchN1,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchN1 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
-                    Row(
-                      children: [
-                        Container(
-                          width: 290.0,
-                          child: Text(
-                            '소리',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                        ),
-                        Switch(
-                            value: switchN2,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value);
-                                switchN2 = value;
-                              });
-                            })
-                      ],
-                    ),
-                    const Divider(color: Colors.white, thickness: 1.0),
+                        const Divider(color: Colors.white, thickness: 1.0),
                   ],
                 ))
               ],
