@@ -259,13 +259,19 @@ class _SignupState extends State<Signup> {
                                             Radius.circular(8.0))),
                                     child: DropdownButton(
                                       hint: Text('   * 학과를 선택하세요'),
-                                      items: _valueList.map(
-                                        (String item) => DropdownMenuItem(child: Text(item),value: item,)
-                                      ).toList(),
-                                      onChanged: (String? value){setState(() {
-                                        _selectedValue = value;
-                                        userDepartment = _selectedValue;
-                                      });},
+                                      items: _valueList
+                                          .map(
+                                              (String item) => DropdownMenuItem(
+                                                    child: Text(item),
+                                                    value: item,
+                                                  ))
+                                          .toList(),
+                                      onChanged: (String? value) {
+                                        setState(() {
+                                          _selectedValue = value;
+                                          userDepartment = _selectedValue;
+                                        });
+                                      },
                                       value: _selectedValue,
                                     ),
                                   ),
@@ -531,38 +537,52 @@ class _SignupState extends State<Signup> {
                                     child: DropdownButton(
                                       hint: Text('   * 학과를 선택하세요'),
                                       dropdownColor: Colors.white,
-                                      items: [
-                                        DropdownMenuItem(
-                                            child: Text('생명과학부'),
-                                            value: '생명과학부'),
-                                        DropdownMenuItem(
-                                            child: Text('물리학과'), value: '물리학과'),
-                                        DropdownMenuItem(
-                                            child: Text('수학과'), value: '수학과'),
-                                        DropdownMenuItem(
-                                            child: Text('식품영양학과'),
-                                            value: '식품영양학과'),
-                                        DropdownMenuItem(
-                                            child: Text('의료학과'), value: '의료학과'),
-                                        DropdownMenuItem(
-                                            child: Text('정보통계학과'),
-                                            value: '정보통계학과'),
-                                        DropdownMenuItem(
-                                            child: Text('지질과학과'),
-                                            value: '지질과학과'),
-                                        DropdownMenuItem(
-                                            child: Text('컴퓨터과학과'),
-                                            value: '컴퓨터과학과'),
-                                        DropdownMenuItem(
-                                            child: Text('화학과'), value: '화학과'),
-                                        DropdownMenuItem(
-                                            child: Text('제약공학과'),
-                                            value: '제약공학과'),
-                                        DropdownMenuItem(
-                                            child: Text('항노화신소재과학과'),
-                                            value: '항노화신소재과학과'),
-                                      ],
-                                      onChanged: (value) {},
+                                      // items: [
+                                      //   DropdownMenuItem(
+                                      //       child: Text('생명과학부'),
+                                      //       value: '생명과학부'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('물리학과'), value: '물리학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('수학과'), value: '수학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('식품영양학과'),
+                                      //       value: '식품영양학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('의료학과'), value: '의료학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('정보통계학과'),
+                                      //       value: '정보통계학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('지질과학과'),
+                                      //       value: '지질과학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('컴퓨터과학과'),
+                                      //       value: '컴퓨터과학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('화학과'), value: '화학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('제약공학과'),
+                                      //       value: '제약공학과'),
+                                      //   DropdownMenuItem(
+                                      //       child: Text('항노화신소재과학과'),
+                                      //       value: '항노화신소재과학과'),
+                                      // ],
+                                      // onChanged: (value) {},
+                                      items: _valueList
+                                          .map(
+                                              (String item) => DropdownMenuItem(
+                                                    child: Text(item),
+                                                    value: item,
+                                                  ))
+                                          .toList(),
+                                      onChanged: (String? value) {
+                                        setState(() {
+                                          _selectedValue = value;
+                                          userDepartment = _selectedValue;
+                                        });
+                                      },
+                                      value: _selectedValue,
                                     ),
                                   ),
                                   // Container(

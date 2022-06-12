@@ -128,12 +128,38 @@ class _AddChatRoomState extends State<AddChatRoom> {
     //     'time': Timestamp.now(),
     //   },
     // );
+
     final depart =
         FirebaseFirestore.instance.collection('chatRoom').doc(_addTitle);
-    final match = 'chatRoomTitle : ' + _addTitle;
-    depart.set({
-      'chatRoomTitle': _addTitle,
-      'time': Timestamp.now(),
+    final UserInfo =
+        FirebaseFirestore.instance.collection('admin').doc(user.uid);
+
+    //채팅방 만드는 코드임.
+    // depart.set({
+    //   'chatRoomTitle': _addTitle,
+    //   'time': Timestamp.now(),
+    // });
+
+    depart.get().then((value) {
+      print(value.get('chatRoomTitle'));
+    });
+
+    UserInfo.get().then((value) {
+      String userName = value.get('userName');
+      String userIdentity = value.get('userIdentity');
+      String userDepartment = value.get('userDepartment');
+      if (userDepartment != _department) {
+        print('본인 학과가 아닙니다.');
+      } else {
+        depart.set({
+          'chatRoomTitle': _addTitle,
+          'time': Timestamp.now(),
+        });
+        print('학과 채팅방이 생성되었습니다.');
+      }
+      // print(userName);
+      // print(userIdentity);
+      // print(userDepartment);
     });
     Navigator.pop(context);
     _snackBarMessage();
