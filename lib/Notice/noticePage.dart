@@ -116,7 +116,7 @@ class _NoticePageState extends State<NoticePage> {
                       hintStyle: TextStyle(color: Colors.grey.shade600),
                       prefixIcon: Icon(
                         Icons.search,
-                        color: Color.fromARGB(255, 165, 111, 111),
+                        color: Colors.grey.shade600,
                         size: 20,
                       ),
                       filled: true,

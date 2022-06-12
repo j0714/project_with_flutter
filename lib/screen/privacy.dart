@@ -76,7 +76,7 @@ class _PrivacyState extends State<Privacy> {
                         Container(
                           height: 50.0,
                           child: TextField(
-                            // obscureText: true,
+                            obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock),
                               hintText: '현재 비밀번호',
@@ -97,7 +97,7 @@ class _PrivacyState extends State<Privacy> {
                           height: 50.0,
                           child: TextField(
                             controller: newUserPassword,
-                            // obscureText: true,
+                            obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.vpn_key_outlined),
                               hintText: '새 비밀번호 입력',

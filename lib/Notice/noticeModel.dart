@@ -19,20 +19,6 @@ class NoticeModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return StreamBuilder(
-    // stream: FirebaseFirestore.instance
-    //     .collection('notice')
-    //     .orderBy('time', descending: true)
-    //     .snapshots(),
-    // builder: (context,
-    //     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //     return Center(
-    //       child: CircularProgressIndicator(),
-    //     );
-    //   }
-    //   final doc = snapshot.data!.docs;
-
     Future<bool> _visible() async {
       FocusScope.of(context).unfocus();
       final user = FirebaseAuth.instance.currentUser;
@@ -43,21 +29,6 @@ class NoticeModel extends StatelessWidget {
       bool value = (userData.data()?['userName'] != null);
       return value;
     }
-
-    // void _deleteNotice() {
-    //   // final doc = FirebaseFirestore.instance.collection('notice').snapshots();
-    //   final doc = FirebaseFirestore.instance
-    //       .collection('notice')
-    //       .orderBy('time', descending: true)
-    //       .snapshots();
-    //   // final docs = doc.data().;
-    //   // final documnets = doc.data!().;/
-    //   // FirebaseFirestore.instance.collection('notice').doc(doc.doc).delete();
-    //   final docs = doc.doc(doc);
-    //   DocumentReference doc_ref =
-    //       FirebaseFirestore.instance.collection("notice").doc();
-    //   FirebaseFirestore.instance.collection('notice').doc('doc_ref').delete();
-    // }
 
     void _showBottomSheet() {
       showModalBottomSheet(
