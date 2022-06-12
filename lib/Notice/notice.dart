@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ui_1/Notice/noticeModel.dart';
 
-
 class NewNotices extends StatelessWidget {
   const NewNotices({Key? key}) : super(key: key);
 
@@ -30,7 +29,7 @@ class NewNotices extends StatelessWidget {
               noticeDocs[index]['noticeTitle'],
               noticeDocs[index]['noticeText'],
               noticeDocs[index]['userName'],
-              noticeDocs[index]['time'].toString(),
+              noticeDocs[index]['dateTime'].toString(),
             );
           },
         );
