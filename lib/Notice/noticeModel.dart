@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_1/color/shareColor.dart';
@@ -7,8 +8,7 @@ import 'package:ui_1/color/shareColor.dart';
 class NoticeModel extends StatelessWidget {
   final Controller controller = Get.put(Controller());
 
-  NoticeModel(
-      this.noticeTitle, this.noticeText, this.userName, this.noticeTime,
+  NoticeModel(this.noticeTitle, this.noticeText, this.userName, this.noticeTime,
       {Key? key})
       : super(key: key);
 
@@ -16,6 +16,69 @@ class NoticeModel extends StatelessWidget {
   final String noticeText;
   final String userName;
   final String noticeTime;
+  String userCode = '';
+
+  void inputCode(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          backgroundColor: Colors.white,
+          child: Container(
+            width: 150,
+            height: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  size: 50,
+                  color: Colors.blue,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  '공지사항 코드를 쓰세요',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextField(
+                  onChanged: (value) {
+                    userCode = value;
+                  },
+                ),
+                GestureDetector(
+                  //onTap: _tryValidation,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: 60.0, left: 30.0, right: 30.0, bottom: 0.0),
+                    width: double.infinity,
+                    child: TextButton(
+                      child: Text(
+                        '확인',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue[700],
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +104,26 @@ class NoticeModel extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.delete_outline),
                 title: Text('Delete'),
-                onTap: () {},
+                onTap: () {
+                  if (userCode == '') {
+                    inputCode(context);
+                  }
+                  final user = FirebaseAuth.instance.currentUser;
+                  final UserNotice1 = FirebaseFirestore.instance
+                      .collection('notice')
+                      .doc(user!.uid + userCode);
+                  UserNotice1.get().then((value) {
+                    String uidCode = value.get('uidcode');
+                    String curUidCod = user.uid + value.get('code');
+                    if (curUidCod == uidCode) {
+                      final delNotiec = FirebaseFirestore.instance
+                          .collection('notice')
+                          .doc(uidCode);
+                      delNotiec.delete();
+                      print('삭제');
+                    }
+                  });
+                },
               ),
               ListTile(
                 leading: Icon(Icons.edit_outlined),
@@ -79,10 +161,12 @@ class NoticeModel extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: <Widget>[
-                      GetX<Controller>(builder:(_)=>CircleAvatar(
-                        backgroundColor: controller.noticecolor().color1,
-                        maxRadius: 20,
-                      ),),
+                      GetX<Controller>(
+                        builder: (_) => CircleAvatar(
+                          backgroundColor: controller.noticecolor().color1,
+                          maxRadius: 20,
+                        ),
+                      ),
                       SizedBox(
                         width: 16,
                       ),

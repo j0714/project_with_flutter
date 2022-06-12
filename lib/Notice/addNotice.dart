@@ -14,6 +14,7 @@ class AddNotice extends StatefulWidget {
 class _AddNoticeState extends State<AddNotice> {
   var _addTitle = '';
   var _addText = '';
+  var _Code = '';
 
   void _showAlert(BuildContext context) {
     showDialog(
@@ -115,15 +116,31 @@ class _AddNoticeState extends State<AddNotice> {
         .collection('admin')
         .doc(user!.uid)
         .get();
-    FirebaseFirestore.instance.collection('notice').add(
-      {
+
+    final UserNotice =
+        FirebaseFirestore.instance.collection('notice').doc(user.uid + _Code);
+    UserNotice.get().then((value) {
+      UserNotice.set({
         'noticeTitle': _addTitle,
         'noticeText': _addText,
         'time': Timestamp.now(),
         'dateTime': Timestamp.now().toDate().toString(),
         'userName': userData.data()!['userName'],
-      },
-    );
+        'code': _Code,
+        'uidcode': user.uid + _Code,
+      });
+    });
+
+    // FirebaseFirestore.instance.collection('notice').add(
+    //   {
+    //     'noticeTitle': _addTitle,
+    //     'noticeText': _addText,
+    //     'time': Timestamp.now(),
+    //     'dateTime': Timestamp.now().toDate().toString(),
+    //     'userName': userData.data()!['userName'],
+    //     'code': _Code,
+    //   },
+    // );
     Navigator.pop(context);
     _snackBarMessage();
   }
@@ -268,6 +285,25 @@ class _AddNoticeState extends State<AddNotice> {
                         maxLines: null,
                       ),
                     ),
+                    TextField(
+                      textInputAction: TextInputAction.next,
+                      onChanged: (value) {
+                        setState(() {
+                          _Code = value;
+                        });
+                      },
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      decoration: InputDecoration(
+                          hintText: 'input Code',
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: ColorSet.pageBackgroundColor),
+                    )
                   ],
                 ),
               ),

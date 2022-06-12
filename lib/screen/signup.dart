@@ -26,6 +26,21 @@ class _SignupState extends State<Signup> {
   String userMinor = '';
   String userIdentity = '';
 
+  final _valueList = [
+    '생명과학부',
+    '물리학과',
+    '수학과',
+    '식품영양학과',
+    '의료학과',
+    '정보통계학과',
+    '지질과학과',
+    '컴퓨터과학과',
+    '화학과',
+    '제약공학과',
+    '항나노신소재과학과',
+  ];
+  String? _selectedValue;
+
   void _tryValidation() {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
@@ -177,7 +192,7 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height:  45.h,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
                                     margin: EdgeInsets.only(top: 10.h),
@@ -208,7 +223,7 @@ class _SignupState extends State<Signup> {
                                     height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top:10.h),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(3),
                                       validator: (value) {
@@ -235,13 +250,14 @@ class _SignupState extends State<Signup> {
                                   Container(
                                     height: 45.h,
                                     width: double.infinity,
-                                    margin: EdgeInsets.only(top: 10.h, left: 20.0, right: 20.0),
+                                    margin: EdgeInsets.only(
+                                        top: 10.h, left: 20.0, right: 20.0),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0))),
                                     child: DropdownButton(
                                       hint: Text('   * 학과를 선택하세요'),
-<<<<<<< HEAD
                                       items: _valueList
                                           .map(
                                               (String item) => DropdownMenuItem(
@@ -252,28 +268,10 @@ class _SignupState extends State<Signup> {
                                       onChanged: (String? value) {
                                         setState(() {
                                           _selectedValue = value;
-                                          userDepartment = _selectedValue;
+                                          userDepartment = _selectedValue!;
                                         });
                                       },
                                       value: _selectedValue,
-=======
-                                      dropdownColor: Colors.white,
-                                      items: [
-                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
-                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
-                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
-                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
-                                        DropdownMenuItem(child:Text('의료학과'), value:'의료학과'),
-                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
-                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
-                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
-                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
-                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
-                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
-                                      ],
-                                      onChanged: (value) {
-                                      },
->>>>>>> 815e9001e031af5415c9821a0bb05603fd6430e3
                                     ),
                                   ),
                                   // Container(
@@ -337,7 +335,7 @@ class _SignupState extends State<Signup> {
                                     ),
                                   ),
                                   Container(
-                                    height:45.h,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
                                     margin: EdgeInsets.only(top: 10.h),
@@ -360,7 +358,7 @@ class _SignupState extends State<Signup> {
                                     height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
-                                    margin: EdgeInsets.only(top:10.h),
+                                    margin: EdgeInsets.only(top: 10.h),
                                     child: TextFormField(
                                       key: ValueKey(8),
                                       onSaved: (value) {
@@ -378,8 +376,10 @@ class _SignupState extends State<Signup> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: 50.h, left: 30.0, right: 30.0, bottom: 0.0
-                                    ),
+                                        top: 50.h,
+                                        left: 30.0,
+                                        right: 30.0,
+                                        bottom: 0.0),
                                     width: double.infinity,
                                     child: TextButton(
                                       child: Text(
@@ -476,7 +476,7 @@ class _SignupState extends State<Signup> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height:45.h,
+                                    height: 45.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 20.0), //가로여백설정
                                     margin: EdgeInsets.only(top: 40.h),
@@ -547,14 +547,29 @@ class _SignupState extends State<Signup> {
                                   Container(
                                     height: 45.h,
                                     width: double.infinity,
-                                    margin: EdgeInsets.only(top: 10.h, left: 20.0, right: 20.0),
+                                    margin: EdgeInsets.only(
+                                        top: 10.h, left: 20.0, right: 20.0),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0))),
                                     child: DropdownButton(
                                       hint: Text('   * 학과를 선택하세요'),
                                       dropdownColor: Colors.white,
-<<<<<<< HEAD
+                                      items: _valueList
+                                          .map(
+                                              (String item) => DropdownMenuItem(
+                                                    child: Text(item),
+                                                    value: item,
+                                                  ))
+                                          .toList(),
+                                      onChanged: (String? value) {
+                                        setState(() {
+                                          _selectedValue = value;
+                                          userDepartment = _selectedValue!;
+                                        });
+                                      },
+                                      value: _selectedValue,
                                       // items: [
                                       //   DropdownMenuItem(
                                       //       child: Text('생명과학부'),
@@ -587,37 +602,6 @@ class _SignupState extends State<Signup> {
                                       //       value: '항노화신소재과학과'),
                                       // ],
                                       // onChanged: (value) {},
-                                      items: _valueList
-                                          .map(
-                                              (String item) => DropdownMenuItem(
-                                                    child: Text(item),
-                                                    value: item,
-                                                  ))
-                                          .toList(),
-                                      onChanged: (String? value) {
-                                        setState(() {
-                                          _selectedValue = value;
-                                          userDepartment = _selectedValue;
-                                        });
-                                      },
-                                      value: _selectedValue,
-=======
-                                      items: [
-                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
-                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
-                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
-                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
-                                        DropdownMenuItem(child:Text('의료학과'), value:'의료학과'),
-                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
-                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
-                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
-                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
-                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
-                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
-                                      ],
-                                      onChanged: (value) {
-                                      },
->>>>>>> 815e9001e031af5415c9821a0bb05603fd6430e3
                                     ),
                                   ),
                                   // Container(
