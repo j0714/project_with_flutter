@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ui_1/color/shareColor.dart';
 import 'package:ui_1/model/chatUsersModel.dart';
 import 'package:ui_1/widget/conversationList.dart';
@@ -28,7 +30,49 @@ class _ChatPageState extends State<ChatPage> {
               ),
             ),
           );
-        });
+        },);
+  }
+
+  Widget _addChatButton() {
+    return Container(
+      padding: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
+      height: 30,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: ColorSet.appBarColor,
+      ),
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 20,
+          ),
+          SizedBox(
+            width: 2,
+          ),
+          Text(
+            'Add New',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<bool> _visible() async {
+    FocusScope.of(context).unfocus();
+    final user = FirebaseAuth.instance.currentUser;
+    final userData = await FirebaseFirestore.instance
+        .collection('admin')
+        .doc(user!.uid)
+        .get();
+    bool value = (userData.data()?['userName'] != null);
+    return value;
   }
 
   List<ChatUsers> chatUsers = [
@@ -64,40 +108,19 @@ class _ChatPageState extends State<ChatPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          showAlert(context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 8, right: 8, top: 2, bottom: 2),
-                          height: 30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: ColorSet.appBarColor,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              Text(
-                                'Add New',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
+                      FutureBuilder(
+                          future: _visible(),
+                          builder: (context, snapshot) {
+                            if (snapshot.data == true) {
+                              return GestureDetector(
+                                onTap: () {
+                                  showAlert(context);
+                                },
+                                child: _addChatButton(),
+                              );
+                            } else
+                              return Container(); //return 값 아무거나 주려고
+                          }),
                     ],
                   ),
                 ),

@@ -42,7 +42,6 @@ class _Notice_SettingState extends State<Notice_Setting> {
                       child: Text("제 1전공", style: TextStyle(fontSize: 30.0)),
                     ),
                     GetX<Controller>(builder:(_)=>Container(
-                      // backgroundImage: NetworkImage(widget.imageURL),
                       color: controller.noticecolor().color1,
                       margin: EdgeInsets.only(right: 10.0),
                       height: 40.h, width: 40.0,

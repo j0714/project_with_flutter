@@ -109,7 +109,6 @@ class NoticeModel extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       GetX<Controller>(builder:(_)=>CircleAvatar(
-                        // backgroundImage: NetworkImage(widget.imageURL),
                         backgroundColor: controller.noticecolor().color1,
                         maxRadius: 20,
                       ),),
@@ -132,7 +131,6 @@ class NoticeModel extends StatelessWidget {
                                 height: 6,
                               ),
                               Text(
-                                // '시간',
                                 noticeTime,
                                 style: TextStyle(
                                   fontSize: 12,

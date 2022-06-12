@@ -81,21 +81,22 @@ class _NoticePageState extends State<NoticePage> {
                             fontSize: 32, fontWeight: FontWeight.bold),
                       ),
                       FutureBuilder(
-                          future: _visible(),
-                          builder: (context, snapshot) {
-                            if (snapshot.data == true) {
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) => AddNotice())));
-                                },
-                                child: _addNoticeButton(),
-                              );
-                            } else
-                              return Container(); //return 값 아무거나 주려고
-                          }),
+                        future: _visible(),
+                        builder: (context, snapshot) {
+                          if (snapshot.data == true) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => AddNotice())));
+                              },
+                              child: _addNoticeButton(),
+                            );
+                          } else
+                            return Container(); //return 값 아무거나 주려고
+                        },
+                      ),
                     ],
                   ),
                 ),
