@@ -12,7 +12,6 @@ class AddChatRoom extends StatefulWidget {
 }
 
 class _AddChatRoomState extends State<AddChatRoom> {
-
   var _semester = '';
   var _department = '';
   var _grade = '';
@@ -123,12 +122,19 @@ class _AddChatRoomState extends State<AddChatRoom> {
         .doc(user!.uid)
         .get();
     var _addTitle = _semester + ' ' + _department + ' ' + _grade + ' ' + '단톡방';
-    FirebaseFirestore.instance.collection('chatRoom').add(
-      {
-        'chatRoomTitle': _addTitle,
-        'time': Timestamp.now(),
-      },
-    );
+    // FirebaseFirestore.instance.collection('chatRoom').add(
+    //   {
+    //     'chatRoomTitle': _addTitle,
+    //     'time': Timestamp.now(),
+    //   },
+    // );
+    final depart =
+        FirebaseFirestore.instance.collection('chatRoom').doc(_addTitle);
+    final match = 'chatRoomTitle : ' + _addTitle;
+    depart.set({
+      'chatRoomTitle': _addTitle,
+      'time': Timestamp.now(),
+    });
     Navigator.pop(context);
     _snackBarMessage();
   }
@@ -136,174 +142,178 @@ class _AddChatRoomState extends State<AddChatRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          backgroundColor: ColorSet.appBarColor,
-          flexibleSpace: SafeArea(
-            child: Container(
-              padding: EdgeInsets.only(right: 16),
-              child: Row(
-                children: <Widget>[
-                  IconButton(
-                    onPressed: () {
-                      _semester.trim().trim().isEmpty && _department.trim().isEmpty && _grade.trim().isEmpty
-                          ? Navigator.pop(context)
-                          : _showAlert(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
+      appBar: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        backgroundColor: ColorSet.appBarColor,
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    _semester.trim().trim().isEmpty &&
+                            _department.trim().isEmpty &&
+                            _grade.trim().isEmpty
+                        ? Navigator.pop(context)
+                        : _showAlert(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'New ChatRoom',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (_semester.trim().isNotEmpty && _department.trim().isNotEmpty && _grade.trim().isNotEmpty){
-                            return _createChatRoom();
-                          }else
-                          return _checkMessage();
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 8, right: 8, top: 2, bottom: 2),
-                          height: 30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.add,
-                                color: ColorSet.appBarColor,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 2,
-                              ),
-                              Text(
-                                'Add',
-                                style: TextStyle(
-                                  color: ColorSet.appBarColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'New ChatRoom',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        if (_semester.trim().isNotEmpty &&
+                            _department.trim().isNotEmpty &&
+                            _grade.trim().isNotEmpty) {
+                          return _createChatRoom();
+                        } else
+                          return _checkMessage();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            left: 8, right: 8, top: 2, bottom: 2),
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.white,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.add,
+                              color: ColorSet.appBarColor,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 2,
+                            ),
+                            Text(
+                              'Add',
+                              style: TextStyle(
+                                color: ColorSet.appBarColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: Scaffold(
+        backgroundColor: ColorSet.pageBackgroundColor,
+        body: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
+                    padding: EdgeInsets.only(left: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                    child: DropdownButton(
+                      hint: Text('Semester'),
+                      items: _semesterList
+                          .map((String item) => DropdownMenuItem(
+                                child: Text(item),
+                                value: item,
+                              ))
+                          .toList(),
+                      onChanged: (var value) {
+                        setState(() {
+                          _selectedSemseter = value;
+                          _semester = _selectedSemseter;
+                        });
+                      },
+                      value: _selectedSemseter,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
+                    padding: EdgeInsets.only(left: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                    child: DropdownButton(
+                      hint: Text('Department'),
+                      items: _departmentList
+                          .map((String item) => DropdownMenuItem(
+                                child: Text(item),
+                                value: item,
+                              ))
+                          .toList(),
+                      onChanged: (var value) {
+                        setState(() {
+                          _selectedDepartment = value;
+                          _department = _selectedDepartment;
+                        });
+                      },
+                      value: _selectedDepartment,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
+                    padding: EdgeInsets.only(left: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                    child: DropdownButton(
+                      hint: Text('Grade'),
+                      items: _gradeList
+                          .map((String item) => DropdownMenuItem(
+                                child: Text(item),
+                                value: item,
+                              ))
+                          .toList(),
+                      onChanged: (var value) {
+                        setState(() {
+                          _selectedGrade = value;
+                          _grade = _selectedGrade;
+                        });
+                      },
+                      value: _selectedGrade,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
         ),
-        body: Scaffold(
-          backgroundColor: ColorSet.pageBackgroundColor,
-          body: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
-                      padding: EdgeInsets.only(left: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      child: DropdownButton(
-                        hint: Text('Semester'),
-                        items: _semesterList
-                            .map((String item) => DropdownMenuItem(
-                                  child: Text(item),
-                                  value: item,
-                                ))
-                            .toList(),
-                        onChanged: (var value) {
-                          setState(() {
-                            _selectedSemseter = value;
-                            _semester = _selectedSemseter;
-                          });
-                        },
-                        value: _selectedSemseter,
-                      ),
-                    ),
-                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
-                      padding: EdgeInsets.only(left: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      child: DropdownButton(
-                        hint: Text('Department'),
-                        items: _departmentList
-                            .map((String item) => DropdownMenuItem(
-                                  child: Text(item),
-                                  value: item,
-                                ))
-                            .toList(),
-                        onChanged: (var value) {
-                          setState(() {
-                            _selectedDepartment = value;
-                            _department = _selectedDepartment;
-                          });
-                        },
-                        value: _selectedDepartment,
-                      ),
-                    ),
-                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 20.0, right: 20.0),
-                      padding: EdgeInsets.only(left: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      child: DropdownButton(
-                        hint: Text('Grade'),
-                        items: _gradeList
-                            .map((String item) => DropdownMenuItem(
-                                  child: Text(item),
-                                  value: item,
-                                ))
-                            .toList(),
-                        onChanged: (var value) {
-                          setState(() {
-                            _selectedGrade = value;
-                            _grade = _selectedGrade;
-                          });
-                        },
-                        value: _selectedGrade,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
+      ),
+    );
   }
 }
