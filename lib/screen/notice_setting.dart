@@ -34,7 +34,7 @@ class _Notice_SettingState extends State<Notice_Setting> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 10.h,),
+              SizedBox(height: 100.h,),
               Row( mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
