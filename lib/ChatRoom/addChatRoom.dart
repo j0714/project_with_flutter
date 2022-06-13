@@ -146,7 +146,7 @@ class _AddChatRoomState extends State<AddChatRoom> {
 
     UserInfo.get().then((value) {
       String userName = value.get('userName');
-      String userIdentity = value.get('userIdentity');
+      // String userIdentity = value.get('userIdentity');
       String userDepartment = value.get('userDepartment');
       if (userDepartment != _department) {
         print('본인 학과가 아닙니다.');

@@ -45,8 +45,7 @@ class ChatRoomModel extends StatelessWidget {
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         decoration: BoxDecoration(
             border: Border(
-                bottom: BorderSide(color: Colors.grey),
-                top: BorderSide(color: Colors.grey))),
+                bottom: BorderSide(color: Colors.grey),)),
         child: Row(
           children: <Widget>[
             Expanded(
