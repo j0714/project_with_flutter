@@ -35,7 +35,6 @@ class _csChatScreenState extends State<csChatScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -154,6 +154,7 @@ class _AddChatRoomState extends State<AddChatRoom> {
         depart.set({
           'chatRoomTitle': _addTitle,
           'time': Timestamp.now(),
+          'Department': _department
         });
         print('학과 채팅방이 생성되었습니다.');
       }

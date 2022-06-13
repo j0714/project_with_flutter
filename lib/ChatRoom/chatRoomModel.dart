@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_1/Chat/chatCS/csChatScreen.dart';
 import 'package:ui_1/color/shareColor.dart';
@@ -6,6 +9,24 @@ class ChatRoomModel extends StatelessWidget {
   const ChatRoomModel(this.chatRoomTitle, {Key? key}) : super(key: key);
 
   final String chatRoomTitle;
+
+  // Future<Widget> checkDepartment() async {
+  //   final user = FirebaseAuth.instance.currentUser;
+  //   final UserDepartInfo =
+  //       FirebaseFirestore.instance.collection('student').doc(user!.uid);
+  //   UserDepartInfo.get().then((value) {
+  //     String userDepart = value.get('userDepartment');
+  //     String userDoubleMajor = value.get('userDoubleMajor');
+  //     String userMinor = value.get('userMinor');
+  //     if (userDepart != '컴퓨터과학과' ||
+  //         userDoubleMajor != '컴퓨터과학과' ||
+  //         userMinor != '컴퓨터과학과') {
+  //       print('소속 학과가 아닙니다.');
+  //     } else {
+  //       return csChatScreen();
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

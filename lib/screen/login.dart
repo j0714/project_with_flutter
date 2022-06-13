@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ui_1/screen/homePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -18,6 +19,22 @@ class _LoginFormState extends State<LoginForm> {
 
   String userEmail = '';
   String userPassword = '';
+
+  // void deleteMessage() {
+  //   int now = DateTime.now().month;
+  //   int jonggang = DateTime.june;
+  //   for (int i = 0; i < 3; i++) {
+  //     if (now == jonggang) {
+  //       FirebaseFirestore.instance
+  //           .collection('chatCS')
+  //           .doc().get().then((value) {
+  //             for (DocumentSnapshot doc in snapsho) {
+  //   doc.reference.delete();
+  // }
+  //           });
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +70,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0), //가로여백설정
-                    margin: EdgeInsets.only( top: 10.h ),
+                    margin: EdgeInsets.only(top: 10.h),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       key: ValueKey(0),
@@ -142,6 +159,7 @@ class _LoginFormState extends State<LoginForm> {
                             print("이메일 인증을 하세요");
                           } else {
                             if (newUser != null) {
+                              //deleteMessage();
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -167,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only( top: 5.h, left: 30.0, right: 30.0),
+                    margin: EdgeInsets.only(top: 5.h, left: 30.0, right: 30.0),
                     width: double.infinity,
                     child: TextButton(
                       child: Text(
@@ -201,9 +219,7 @@ class _LoginFormState extends State<LoginForm> {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: 100.h
-                  ),
+                  SizedBox(height: 100.h),
                 ],
               ),
             ),
