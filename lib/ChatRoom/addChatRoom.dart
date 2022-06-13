@@ -158,9 +158,6 @@ class _AddChatRoomState extends State<AddChatRoom> {
         });
         print('학과 채팅방이 생성되었습니다.');
       }
-      // print(userName);
-      // print(userIdentity);
-      // print(userDepartment);
     });
     Navigator.pop(context);
     _snackBarMessage();
