@@ -19,15 +19,22 @@ class _SignupState extends State<Signup> {
   String userName = '';
   String userEmail = '';
   String userPassword = '';
-  String userDepartment = '';
+  String? userDepartment = '';
   String userId = ''; //학번
   String userSemester = '';
   String userDoubleMajor = '';
   String userMinor = '';
   String userIdentity = '';
 
+<<<<<<< HEAD
   final _valueList = [
     '생명과학부',
+=======
+  String? _selectedValue = '';
+
+  final _valueList = [
+        '생명과학부',
+>>>>>>> 0a7cc3e78d7dc60a472a100938698ec6d48e11b3
     '물리학과',
     '수학과',
     '식품영양학과',
@@ -39,7 +46,10 @@ class _SignupState extends State<Signup> {
     '제약공학과',
     '항나노신소재과학과',
   ];
+<<<<<<< HEAD
   String? _selectedValue;
+=======
+>>>>>>> 0a7cc3e78d7dc60a472a100938698ec6d48e11b3
 
   void _tryValidation() {
     final isValid = _formKey.currentState!.validate();
@@ -257,6 +267,7 @@ class _SignupState extends State<Signup> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(8.0))),
                                     child: DropdownButton(
+<<<<<<< HEAD
                                         hint: Text('   * 학과를 선택하세요'),
                                         dropdownColor: Colors.white,
                                         items: _valueList
@@ -272,6 +283,44 @@ class _SignupState extends State<Signup> {
                                             userDepartment = _selectedValue!;
                                           });
                                         }),
+=======
+                                      hint: Text('   * 학과를 선택하세요'),
+                                      dropdownColor: Colors.white,
+                                      items: [
+                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
+                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
+                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
+                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
+                                        DropdownMenuItem(child:Text('의류학과'), value:'의류학과'),
+                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
+                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
+                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
+                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
+                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
+                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
+                                      ],
+
+
+                                      // items: _valueList.map(
+                                      //   (String item) => DropdownMenuItem(child: Text(item), value: item,)
+                                      // ).toList(),
+                                      // onChanged: (String? value){
+                                      //   setState(() {
+                                      //     _selectedValue = value;
+                                      //     userDepartment = _selectedValue;
+                                      //   });
+                                      // },
+                                      // value: _selectedValue,
+
+
+                                      onChanged: (String? value) {
+                                        // userDepartment
+                                        _selectedValue = value;
+                                        userDepartment = _selectedValue;
+                                      },
+                                      value: _selectedValue,
+                                    ),
+>>>>>>> 0a7cc3e78d7dc60a472a100938698ec6d48e11b3
                                   ),
                                   // Container(
                                   //   height: m.size.height * 0.06102,
@@ -545,6 +594,7 @@ class _SignupState extends State<Signup> {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(8.0))),
                                     child: DropdownButton(
+<<<<<<< HEAD
                                         hint: Text('   * 학과를 선택하세요'),
                                         dropdownColor: Colors.white,
                                         items: _valueList
@@ -560,6 +610,26 @@ class _SignupState extends State<Signup> {
                                             userDepartment = _selectedValue!;
                                           });
                                         }),
+=======
+                                      hint: Text('   * 학과를 선택하세요'),
+                                      dropdownColor: Colors.white,
+                                      items: [
+                                        DropdownMenuItem(child:Text('생명과학부'), value:'생명과학부'),
+                                        DropdownMenuItem(child:Text('물리학과'), value:'물리학과'),
+                                        DropdownMenuItem(child:Text('수학과'), value:'수학과'),
+                                        DropdownMenuItem(child:Text('식품영양학과'), value:'식품영양학과'),
+                                        DropdownMenuItem(child:Text('의류학과'), value:'의류학과'),
+                                        DropdownMenuItem(child:Text('정보통계학과'), value:'정보통계학과'),
+                                        DropdownMenuItem(child:Text('지질과학과'), value:'지질과학과'),
+                                        DropdownMenuItem(child:Text('컴퓨터과학과'), value:'컴퓨터과학과'),
+                                        DropdownMenuItem(child:Text('화학과'), value:'화학과'),
+                                        DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
+                                        DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
+                                      ],
+                                      onChanged: (value) {
+                                      },
+                                    ),
+>>>>>>> 0a7cc3e78d7dc60a472a100938698ec6d48e11b3
                                   ),
                                   // Container(
                                   //   height: m.size.height * 0.06102,
