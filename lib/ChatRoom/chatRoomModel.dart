@@ -10,42 +10,44 @@ class ChatRoomModel extends StatelessWidget {
 
   final String chatRoomTitle;
 
-  // Future<Widget> checkDepartment() async {
-  //   final user = FirebaseAuth.instance.currentUser;
-  //   final UserDepartInfo =
-  //       FirebaseFirestore.instance.collection('student').doc(user!.uid);
-  //   UserDepartInfo.get().then((value) {
-  //     String userDepart = value.get('userDepartment');
-  //     String userDoubleMajor = value.get('userDoubleMajor');
-  //     String userMinor = value.get('userMinor');
-  //     if (userDepart != '컴퓨터과학과' ||
-  //         userDoubleMajor != '컴퓨터과학과' ||
-  //         userMinor != '컴퓨터과학과') {
-  //       print('소속 학과가 아닙니다.');
-  //     } else {
-  //       return csChatScreen();
-  //     }
-  //   });
-  // }
+  void checkDepartment() {
+    final user = FirebaseAuth.instance.currentUser;
+    final UserDepartInfo =
+        FirebaseFirestore.instance.collection('student').doc(user!.uid);
+    UserDepartInfo.get().then((value) {
+      String userDepart = value.get('userDepartment');
+      String userDoubleMajor = value.get('userDoubleMajor');
+      String userMinor = value.get('userMinor');
+      if (userDepart != '컴퓨터과학과' ||
+          userDoubleMajor != '컴퓨터과학과' ||
+          userMinor != '컴퓨터과학과') {
+        print('소속 학과가 아닙니다.');
+      } else {
+        return csChatScreen();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return csChatScreen();
-            },
-          ),
-        );
+        checkDepartment();
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) {
+        //       return csChatScreen();
+        //     },
+        //   ),
+        // );
       },
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         decoration: BoxDecoration(
             border: Border(
-                bottom: BorderSide(color: Colors.grey),)),
+          bottom: BorderSide(color: Colors.grey),
+        )),
         child: Row(
           children: <Widget>[
             Expanded(
