@@ -19,12 +19,28 @@ class _SignupState extends State<Signup> {
   String userName = '';
   String userEmail = '';
   String userPassword = '';
-  String userDepartment = '';
+  String? userDepartment = '';
   String userId = ''; //학번
   String userSemester = '';
   String userDoubleMajor = '';
   String userMinor = '';
   String userIdentity = '';
+
+  String? _selectedValue = '';
+
+  final _valueList = [
+        '생명과학부',
+    '물리학과',
+    '수학과',
+    '식품영양학과',
+    '의료학과',
+    '정보통계학과',
+    '지질과학과',
+    '컴퓨터과학과',
+    '화학과',
+    '제약공학과',
+    '항나노신소재과학과',
+  ];
 
   void _tryValidation() {
     final isValid = _formKey.currentState!.validate();
@@ -255,8 +271,26 @@ class _SignupState extends State<Signup> {
                                         DropdownMenuItem(child:Text('제약공학과'), value:'제약공학과'),
                                         DropdownMenuItem(child:Text('항노화신소재과학과'), value:'항노화신소재과학과'),
                                       ],
-                                      onChanged: (value) {
+
+
+                                      // items: _valueList.map(
+                                      //   (String item) => DropdownMenuItem(child: Text(item), value: item,)
+                                      // ).toList(),
+                                      // onChanged: (String? value){
+                                      //   setState(() {
+                                      //     _selectedValue = value;
+                                      //     userDepartment = _selectedValue;
+                                      //   });
+                                      // },
+                                      // value: _selectedValue,
+
+
+                                      onChanged: (String? value) {
+                                        // userDepartment
+                                        _selectedValue = value;
+                                        userDepartment = _selectedValue;
                                       },
+                                      value: _selectedValue,
                                     ),
                                   ),
                                   // Container(
