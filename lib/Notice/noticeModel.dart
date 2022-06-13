@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ui_1/Notice/noticePage.dart';
 import 'package:ui_1/color/shareColor.dart';
+import 'package:ui_1/screen/homePage.dart';
 
 class NoticeModel extends StatelessWidget {
   final Controller controller = Get.put(Controller());
@@ -31,9 +33,10 @@ class NoticeModel extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.check_circle,
+                  // Icons.check_circle,
+                  Icons.warning_amber_outlined,
                   size: 50,
-                  color: Colors.blue,
+                  color: Colors.amber,
                 ),
                 SizedBox(
                   height: 20,
@@ -41,15 +44,18 @@ class NoticeModel extends StatelessWidget {
                 Text(
                   '공지사항 코드를 쓰세요',
                   style: TextStyle(
-                    color: Colors.blue,
+                    // color: Colors.blue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                TextField(
-                  onChanged: (value) {
-                    userCode = value;
-                  },
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child : TextField(
+                    onChanged: (value) {
+                      userCode = value;
+                    },
+                  ),
                 ),
                 GestureDetector(
                   //onTap: _tryValidation,
@@ -63,6 +69,12 @@ class NoticeModel extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => HomePage(),
+                        //   ),
+                        // );
                         Navigator.pop(context);
                       },
                     ),
@@ -93,6 +105,26 @@ class NoticeModel extends StatelessWidget {
       return value;
     }
 
+    // void _deleteNotice() async {
+    //   if (userCode == '') {
+    //     inputCode(context);
+    //   }
+    //   final user = FirebaseAuth.instance.currentUser;
+    //   final UserNotice1 = await FirebaseFirestore.instance
+    //       .collection('notice')
+    //       .doc(user!.uid + userCode);
+    //   UserNotice1.get().then((value) {
+    //     String uidCode = value.get('uidcode');
+    //     String curUidCod = user.uid + value.get('code');
+    //     if (curUidCod == uidCode) {
+    //       final delNotiec =
+    //           FirebaseFirestore.instance.collection('notice').doc(uidCode);
+    //       delNotiec.delete();
+    //       print('삭제');
+    //     }
+    //   });
+    // }
+
     void _showBottomSheet() {
       showModalBottomSheet(
         context: context,
@@ -104,6 +136,8 @@ class NoticeModel extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.delete_outline),
                 title: Text('Delete'),
+                iconColor: Colors.red,
+                textColor: Colors.red,
                 onTap: () {
                   if (userCode == '') {
                     inputCode(context);
@@ -123,6 +157,7 @@ class NoticeModel extends StatelessWidget {
                       print('삭제');
                     }
                   });
+                  // _deleteNotice();
                 },
               ),
               ListTile(
@@ -198,10 +233,18 @@ class NoticeModel extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: _showBottomSheet,
-                  icon: Icon(Icons.more_horiz),
-                )
+                FutureBuilder(
+                  future: _visible(),
+                  builder: (context, snapshot) {
+                    if (snapshot.data == true) {
+                      return IconButton(
+                        onPressed: _showBottomSheet,
+                        icon: Icon(Icons.more_horiz),
+                      );
+                    } else
+                      return Container(); //return 값 아무거나 주려고
+                  },
+                ),
               ],
             ),
           ),

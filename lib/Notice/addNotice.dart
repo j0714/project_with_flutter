@@ -163,7 +163,7 @@ class _AddNoticeState extends State<AddNotice> {
                 children: <Widget>[
                   IconButton(
                     onPressed: () {
-                      _addTitle.trim().isEmpty && _addText.trim().isEmpty
+                      _addTitle.trim().isEmpty && _addText.trim().isEmpty && _Code.trim().isEmpty
                           ? Navigator.pop(context)
                           : _showAlert(context);
                     },
@@ -269,6 +269,25 @@ class _AddNoticeState extends State<AddNotice> {
                           fillColor: ColorSet.pageBackgroundColor),
                     ),
                     Container(
+                      decoration: BoxDecoration(
+                          border: Border(top: BorderSide(color: Colors.grey))),
+                      child: TextField(
+                      textInputAction: TextInputAction.next,
+                      onChanged: (value) {
+                        setState(() {
+                          _Code = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                          hintText: 'input Code',
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: ColorSet.pageBackgroundColor),
+                    ),),
+                    Container(
                       padding: EdgeInsets.only(top: 8),
                       decoration: BoxDecoration(
                           border: Border(top: BorderSide(color: Colors.grey))),
@@ -285,25 +304,6 @@ class _AddNoticeState extends State<AddNotice> {
                         maxLines: null,
                       ),
                     ),
-                    TextField(
-                      textInputAction: TextInputAction.next,
-                      onChanged: (value) {
-                        setState(() {
-                          _Code = value;
-                        });
-                      },
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      decoration: InputDecoration(
-                          hintText: 'input Code',
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          border: InputBorder.none,
-                          filled: true,
-                          fillColor: ColorSet.pageBackgroundColor),
-                    )
                   ],
                 ),
               ),
